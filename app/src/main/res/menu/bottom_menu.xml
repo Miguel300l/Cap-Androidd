@@ -12,8 +12,7 @@
            android:title="SOLICITAR CHARLA"
            android:icon="@drawable/baseline_group_24" />
 
-       <item
-           android:title=""/>
+
 
        <item
            android:id="@+id/eventos"
@@ -26,5 +25,8 @@
            android:title="@string/sugerencias"
            android:icon="@drawable/baseline_quiz_24" />
 
-
+       <item
+           android:id="@+id/configuraciones"
+           android:title="CONFIGURACIONES"
+           android:icon="@drawable/baseline_quiz_24"/>
 </menu>

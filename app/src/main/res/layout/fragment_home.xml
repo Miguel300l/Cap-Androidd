@@ -16,12 +16,15 @@
         android:textSize="30sp"
         android:textColor="@color/white" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/registro"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="registro"/>
+        android:backgroundTint="@color/verde_claro"
+        android:text="Actualizar Datos"
+        android:textColor="@color/white"
+         />
 
 </FrameLayout>

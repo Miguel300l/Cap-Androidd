@@ -5,4 +5,8 @@
     <string name="sugerencias">SUGERENCIAS</string>
     <string name="eventos">EVENTOS</string>
     <string name="inicio">INICIO</string>
+    <string name="configuracion_general">Configuracion General</string>
+    <string name="nombre">Nombre</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
 </resources>
