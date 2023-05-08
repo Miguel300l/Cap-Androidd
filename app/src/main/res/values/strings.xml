@@ -9,4 +9,8 @@
     <string name="nombre">Nombre</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="psicologo">PSICOLOGO</string>
+    <string name="enfermero">ENFERMERO</string>
+    <string name="charlas">CHARLAS</string>
+    <string name="solicitar_charla">SOLICITAR CHARLA</string>
 </resources>
