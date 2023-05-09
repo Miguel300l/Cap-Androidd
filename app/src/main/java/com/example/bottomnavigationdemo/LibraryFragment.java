@@ -12,8 +12,6 @@ import android.widget.Button;
 
 
 public class LibraryFragment extends Fragment {
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

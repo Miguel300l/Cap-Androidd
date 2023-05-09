@@ -4,33 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/Psicologos"
     android:background="@color/white"
-    tools:context="HomeFragment">
+    tools:context=".HomeFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="EVENTOS"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/verde_claro"
+        android:padding="10dp"
+        android:text="@string/psicologos"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-52dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="110dp"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="50dp"
             android:orientation="vertical">
@@ -55,19 +60,20 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imgPsicologo1"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/apoyo" />
+                        android:src="@drawable/psicologo" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Apoyo Sostenimiento"
+                        android:text="@string/psicologo"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -76,7 +82,9 @@
                         android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="18sp" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,30 +96,29 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imgPsicologo2"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/apoyo" />
+                        android:src="@drawable/psicologo" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Apoyo Sostenimiento"
+                        android:text="@string/psicologo"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="54dp"
+                        android:layout_height="wrap_content"
                         android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -132,32 +139,31 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imgPsicologo3"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
-                        android:scaleType="fitCenter"
                         android:layout_gravity="center"
-                        android:src="@drawable/apoyo" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/psicologo" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Apoyo Sostenimiento"
+                        android:text="@string/psicologo"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="67dp"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:layout_height="wrap_content"
+                        android:text="Lorem ipsum dolor sit amet consectetur"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
-
+                        android:textSize="18sp" />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -168,89 +174,55 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imgPsicologo4"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/apoyo" />
+                        android:src="@drawable/psicologo" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Apoyo Sostenimiento"
+                        android:text="@string/psicologo"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:text="Lorem ipsum dolor sit amet consectetur"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
-
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
 
-
     <Button
-        android:id="@+id/btncharla"
+        android:id="@+id/btnenfermero"
         android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="60dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:background="@drawable/border"
+        android:textColor="@color/black"
         android:backgroundTint="@color/verde_claro"
-        android:text="Solicitar Charla"
+        android:text="@string/enfermeros"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="206dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="315dp" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="589dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="552dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="511dp" />
+        app:layout_constraintGuide_begin="559dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

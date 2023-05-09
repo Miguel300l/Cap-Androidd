@@ -5,17 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.bottomnavigationdemo.databinding.ActivityMainBinding;
 
@@ -42,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Eventos());
                     break;
                 case R.id.charla:
-                    replaceFragment(new SubscriptionFragment());
+                    replaceFragment(new Fragment_Psicologos());
                     break;
                 case R.id.pqrs:
                     replaceFragment(new LibraryFragment());
@@ -58,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.configuraciones:
                     replaceFragment(new Configuraciones());
+                    break;
+                case R.id.Psicologos:
+                    replaceFragment(new PerfilPsicologoFragment());
+                    break;
+                case R.id.enfermeros:
+                    replaceFragment(new Fragment_Enfermeros());
                     break;
             }
 

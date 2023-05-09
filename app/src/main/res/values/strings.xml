@@ -13,4 +13,8 @@
     <string name="enfermero">ENFERMERO</string>
     <string name="charlas">CHARLAS</string>
     <string name="solicitar_charla">SOLICITAR CHARLA</string>
+    <string name="psicologos">PSICOLOGOS</string>
+    <string name="enfermeros">ENFERMEROS</string>
+    <string name="crianza_respetuosa">Crianza Respetuosa</string>
+    <string name="desarrollo_personal">Desarrollo Personal</string>
 </resources>

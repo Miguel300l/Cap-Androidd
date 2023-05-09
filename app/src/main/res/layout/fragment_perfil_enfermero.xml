@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragmentPerfilEnfermeros"
+    android:id="@+id/perfilenfermero"
     tools:context=".PerfilEnfermeroFragment">
 
     <TextView
-        android:id="@+id/enfermeros"
+        android:id="@+id/btncharla"
         android:layout_width="327dp"
         android:layout_height="55dp"
-        android:background="@color/verde_claro"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/verde_claro"
         android:clickable="true"
         android:gravity="center"
         android:text="@string/enfermero"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -31,15 +33,16 @@
         android:layout_height="206dp"
         android:background="@drawable/border"
         android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192">
+        app:layout_constraintTop_toBottomOf="@+id/btncharla"
+        app:layout_constraintVertical_bias="0.02">
 
         <ImageView
-            android:id="@+id/imgEnfermero"
+            android:id="@+id/imgPsicologo"
             android:layout_width="127dp"
             android:layout_height="112dp"
             android:layout_gravity="center"
@@ -59,17 +62,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/imgPsicologos"
         android:layout_width="305dp"
         android:layout_height="260dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/border"
-        android:gravity="center_vertical"
+        android:layout_marginRight="46dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.063">
 
         <TextView
             android:layout_width="match_parent"
@@ -92,9 +95,9 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/border"
             android:gravity="start"
+            android:lineSpacingExtra="8dp"
             android:padding="2.5dp"
             android:paddingStart="10dp"
-            android:lineSpacingExtra="8dp"
             android:text="Educación Sexual"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -106,12 +109,12 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:padding="2.5dp"
-            android:paddingStart="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/border"
             android:gravity="start"
             android:lineSpacingExtra="8dp"
+            android:padding="2.5dp"
+            android:paddingStart="10dp"
             android:text="Salud Mental"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -122,14 +125,14 @@
             android:layout_height="30dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            android:padding="2.5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/border"
-            android:paddingStart="10dp"
             android:gravity="start"
             android:lineSpacingExtra="8dp"
-            android:text="Crianza Respetuosa"
+            android:padding="2.5dp"
+            android:paddingStart="10dp"
+            android:text="@string/crianza_respetuosa"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -139,14 +142,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            android:padding="2.5dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/border"
+            android:padding="2.5dp"
             android:paddingStart="10dp"
-            android:gravity="start"
-            android:lineSpacingExtra="8dp"
-            android:text="Desarrollo Personal"
+            android:text="@string/desarrollo_personal"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -158,19 +158,20 @@
         android:layout_width="243dp"
         android:layout_height="57dp"
         android:background="@drawable/border"
-        android:clickable="true"
-        android:gravity="center"
         android:text="@string/solicitar_charla"
         android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="663dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
