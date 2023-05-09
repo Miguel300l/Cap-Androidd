@@ -19,7 +19,6 @@
     <string name="desarrollo_personal">Desarrollo Personal</string>
 
 
-
     //conf Perfil
     <string name="Configuracion_De_Perfil">Configuracion De Perfil</string>
     <string name="name_of_user">Name of User</string>
@@ -31,4 +30,9 @@
     <string name="centro_privacidad">Centro de Privacidad</string>
     <string name="eliminar_cuenta">Eliminar mi cuenta</string>
     <string name="Configuracion">Configuracion</string>
+    <string-array name="jornada_options">
+        <item>Mañana</item>
+        <item>Tarde</item>
+        <item>Noche</item>
+    </string-array>
 </resources>
