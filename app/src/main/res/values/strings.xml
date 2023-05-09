@@ -17,4 +17,18 @@
     <string name="enfermeros">ENFERMEROS</string>
     <string name="crianza_respetuosa">Crianza Respetuosa</string>
     <string name="desarrollo_personal">Desarrollo Personal</string>
+
+
+
+    //conf Perfil
+    <string name="Configuracion_De_Perfil">Configuracion De Perfil</string>
+    <string name="name_of_user">Name of User</string>
+    <string name="nombre_ficha">ADSI</string>
+    <string name="numero_ficha">2452439</string>
+    <string name="configuracio_privacidad">Configuracion y Privacidad</string>
+    <string name="ayuda_soporte">Ayuda y Soporte</string>
+    <string name="cerrar_session">cerrar_session</string>
+    <string name="centro_privacidad">Centro de Privacidad</string>
+    <string name="eliminar_cuenta">Eliminar mi cuenta</string>
+    <string name="Configuracion">Configuracion</string>
 </resources>
