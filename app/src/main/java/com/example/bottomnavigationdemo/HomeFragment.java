@@ -18,25 +18,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Obtiene una referencia del botón en el layout
-        Button btn = (Button) view.findViewById(R.id.btnConfigPerfil);
-
-        // Agrega un escuchador de clics al botón
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crea una instancia del nuevo fragmento
-               ConfigPerfil vwConfigPerfil = new ConfigPerfil();
-
-                // Obtiene una instancia del FragmentManager
-                FragmentManager fragmentManager = getFragmentManager();
-
-                // Reemplaza el fragmento actual con el nuevo fragmento
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, vwConfigPerfil)
-                        .commit();
-            }
-        });
 
         return view;
     }

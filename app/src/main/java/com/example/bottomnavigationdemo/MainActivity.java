@@ -49,19 +49,22 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.configuraciones:
                     replaceFragment(new Configuraciones());
                     break;
+
+                case R.id.enfermeros:
+                    replaceFragment(new Fragment_Enfermeros());
+                    break;
                 case R.id.Psicologos:
                     replaceFragment(new PerfilPsicologoFragment());
                     break;
-                case R.id.enfermeros:
-                    replaceFragment(new Fragment_Enfermeros());
+
+                case R.id.vwConfigPerfil:
+                    replaceFragment(new ConfigPerfil());
                     break;
 
             }
 
             return true;
         });
-
-
 
     }
     private  void replaceFragment(Fragment fragment) {

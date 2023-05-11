@@ -4,7 +4,7 @@
 
        <item
        android:id="@+id/inicio"
-       android:title="@string/inicio"
+       android:title="EVENTOS"
        android:icon="@drawable/ic_home" />
 
        <item
@@ -16,8 +16,9 @@
 
        <item
            android:id="@+id/eventos"
-           android:title="@string/eventos"
-           android:icon="@drawable/baseline_event_24"
+           android:title="PSICOLOGOS"
+           android:icon="@drawable/psychology"
+           android:iconTint="@color/verde_claro"
            />
 
        <item
