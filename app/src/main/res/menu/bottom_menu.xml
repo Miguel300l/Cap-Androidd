@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
        <item
-       android:id="@+id/inicio"
+       android:id="@+id/eventos"
        android:title="EVENTOS"
        android:icon="@drawable/ic_home" />
 
        <item
            android:id="@+id/charla"
-           android:title="SOLICITAR CHARLA"
+           android:title="CHARLA"
            android:icon="@drawable/baseline_group_24" />
 
 
 
        <item
-           android:id="@+id/eventos"
+           android:id="@+id/psicologoss"
            android:title="PSICOLOGOS"
            android:icon="@drawable/psychology"
            android:iconTint="@color/verde_claro"

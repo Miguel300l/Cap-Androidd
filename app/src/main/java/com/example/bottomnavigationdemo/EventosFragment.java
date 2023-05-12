@@ -9,25 +9,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 
-public class Configuraciones extends Fragment {
+public class EventosFragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_configuraciones, container, false);
+        View view = inflater.inflate(R.layout.fragment_eventos, container, false);
 
-        Button btnConfguracion = (Button) view.findViewById(R.id.btnConfguracion);
-        btnConfguracion.setOnClickListener(new View.OnClickListener() {
+        Button btneventoo = (Button) view.findViewById(R.id.btneventoo);
+        btneventoo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ConfigPerfil vwConfigPerfil = new ConfigPerfil();
+                Fragment_charlass Eventos_Charlas = new Fragment_charlass();
 
                 FragmentManager fragmentManager = getFragmentManager();
 
                 fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, vwConfigPerfil)
+                        .replace(R.id.frame_layout, Eventos_Charlas)
                         .commit();
             }
         });

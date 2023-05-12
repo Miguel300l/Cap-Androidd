@@ -19,23 +19,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+        replaceFragment(new EventosFragment());
 
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-                case R.id.inicio:
-                    replaceFragment(new HomeFragment());
-                    break;
                 case R.id.eventos:
-                    replaceFragment(new Eventos());
+                    replaceFragment(new EventosFragment());
+                    break;
+                case R.id.psicologoss:
+                    replaceFragment(new Psicologos());
                     break;
                 case R.id.charla:
-                    replaceFragment(new Fragment_Psicologos());
+                    replaceFragment(new Fragment_charlass());
                     break;
                 case R.id.pqrs:
-                    replaceFragment(new LibraryFragment());
+                    replaceFragment(new SugerenciasFragment());
                     break;
                 case R.id.registro2:
                     replaceFragment(new Registro());
@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.enfermeros:
                     replaceFragment(new Fragment_Enfermeros());
-                    break;
-                case R.id.Psicologos:
-                    replaceFragment(new PerfilPsicologoFragment());
                     break;
 
                 case R.id.vwConfigPerfil:
