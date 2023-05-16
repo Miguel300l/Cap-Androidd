@@ -23,6 +23,7 @@
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="50dp"
         android:backgroundTint="@color/azul_oscuro"
+
         android:background="@color/verde_claro">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
