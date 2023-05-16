@@ -37,12 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.pqrs:
                     replaceFragment(new SugerenciasFragment());
                     break;
-                case R.id.registro2:
-                    replaceFragment(new Registro());
-                    break;
-                case R.id.login_library:
-                    replaceFragment(new Login());
-                    break;
+
                 case R.id.config_general:
                     replaceFragment(new Configuracion_General());
                     break;

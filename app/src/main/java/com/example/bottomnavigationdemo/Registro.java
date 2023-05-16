@@ -18,25 +18,7 @@ public class Registro extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_registro, container, false);
 
-        // Obtiene una referencia del botón en el layout
-        Button btn = (Button) view.findViewById(R.id.devuelta);
 
-        // Agrega un escuchador de clics al botón
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crea una instancia del nuevo fragmento
-                Configuracion_General config_general = new Configuracion_General();
-
-                // Obtiene una instancia del FragmentManager
-                FragmentManager fragmentManager = getFragmentManager();
-
-                // Reemplaza el fragmento actual con el nuevo fragmento
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, config_general)
-                        .commit();
-            }
-        });
 
         return view;
     }

@@ -2,22 +2,198 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/registro2"
-    android:background="#00324D"
     android:layout_height="match_parent"
-    tools:context=".Registro">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RegistroPerson">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Registro"
-        android:textSize="30dp"
-        android:textColor="@color/white"
-        android:gravity="center"/>
+        android:layout_marginTop="15dp"
+        android:gravity="top"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginBottom="40dp"
+            android:text="REGISTRA TUS DATOS"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/devuelta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/NombresUsuar"
+                android:inputType="text"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="NOMBRES" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ApellidoUser"
+                android:inputType="text"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="APELLIDOS" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiEmailUser"
+                android:inputType="text"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="CORREO ELECTRONICO" />
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/toggle_pass">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiPasswordUser"
+                android:inputType="textPassword"
+                android:text="123456"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="CONTRASEÑA" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/toggle_pass">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiConfirmPasswordUser"
+                android:inputType="textPassword"
+                android:text="123456"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CONFIRMAR CONTRASEÑA"/>
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tlTelefonoUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="#00FF0000"
+            app:boxStrokeColor="#00FF0000"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="#131313"
+            app:hintTextColor="#101010"
+            app:startIconTint="#323232"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/toggle_pass">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TelefonoUser"
+                android:inputType="number"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="TELEFONO"/>
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/RegistrarDatosUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registar"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+
+
 </FrameLayout>
