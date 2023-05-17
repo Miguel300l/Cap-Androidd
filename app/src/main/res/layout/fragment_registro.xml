@@ -1,200 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/RegistroPerson">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/regis"
+    tools:context=".MainActivity">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:gravity="top"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
 
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="85dp"
-            android:layout_marginBottom="40dp"
-            android:text="REGISTRA TUS DATOS"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+        app:cardElevation="20dp"
+        >
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232">
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="24dp"
+            android:background="@color/white">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/NombresUsuar"
-                android:inputType="text"
-                android:text=""
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="REGISTRA TUS DATOS"
+                android:id="@+id/loginText"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/azul_oscuro"/>
 
-                android:hint="NOMBRES" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ApellidoUser"
-                android:inputType="text"
-                android:text=""
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
-                android:hint="APELLIDOS" />
+                <com.google.android.material.textfield.TextInputLayout
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="NOMBRE"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/NombreRegistro"
+                        />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiEmailUser"
-                android:inputType="text"
-                android:text=""
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
-                android:hint="CORREO ELECTRONICO" />
+                <com.google.android.material.textfield.TextInputLayout
 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="APELLIDO"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ApellidoRegistro"
+                        />
 
-        </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+            </LinearLayout>
+
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/toggle_pass">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiPasswordUser"
-                android:inputType="textPassword"
-                android:text="123456"
+            <com.google.android.material.textfield.TextInputLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:hint="CORREO"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                android:hint="CONTRASEÑA" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/CorreoRegistro"
+                    />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
+        </LinearLayout>
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/toggle_pass">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiConfirmPasswordUser"
-                android:inputType="textPassword"
-                android:text="123456"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CONFIRMAR CONTRASEÑA"/>
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
+                <com.google.android.material.textfield.TextInputLayout
 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="CONTRASEÑA"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ContraseñaRegistro"
+                        />
 
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlTelefonoUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:boxBackgroundColor="#00FF0000"
-            app:boxStrokeColor="#00FF0000"
-            app:boxStrokeWidth="0dp"
-            app:endIconTint="#131313"
-            app:hintTextColor="#101010"
-            app:startIconTint="#323232"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/toggle_pass">
+            </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/TelefonoUser"
-                android:inputType="number"
-                android:text=""
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="TELEFONO"/>
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="CONFIRMAR CONTRASEÑA"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ConfirmarRegistro"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="TELEFONO"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TelefonoRegistro"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="PROGRAMA"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ProgramaRegistro"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:hint="GENERO"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recordar Usuario" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/GeneroRegistro"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/RegistrarDatosUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registar"
-            >
-
-        </Button>
-
-    </LinearLayout>
+            </LinearLayout>
 
 
 
-</FrameLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/RegisterButton"
+                android:text="REGISTRAR"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/azul_oscuro"
+                app:cornerRadius = "20dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+</LinearLayout>
