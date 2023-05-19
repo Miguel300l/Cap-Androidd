@@ -23,7 +23,7 @@ public class ConfigPerfil extends Fragment {
             @Override
             public void onClick(View v) {
                 // Crea una instancia del nuevo fragmento
-                Configuracion_General config_general = new Configuracion_General();
+                Config_general config_general = new Config_general();
 
                 // Obtiene una instancia del FragmentManager
                 FragmentManager fragmentManager = getFragmentManager();

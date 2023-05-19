@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Psicologos"
-    android:background="@color/white"
+    android:background="@color/azul_oscuro"
     tools:context=".EventosFragment">
 
     <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="226dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
+                android:background="@color/azul_oscuro"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/white"
+                android:background="@color/azul_oscuro"
                 android:orientation="horizontal">
 
                 <LinearLayout

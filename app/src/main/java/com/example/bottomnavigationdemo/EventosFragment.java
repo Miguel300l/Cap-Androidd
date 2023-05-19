@@ -18,20 +18,6 @@ public class EventosFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_eventos, container, false);
 
-        Button btneventoo = (Button) view.findViewById(R.id.btneventoo);
-        btneventoo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment_charlass Eventos_Charlas = new Fragment_charlass();
-
-                FragmentManager fragmentManager = getFragmentManager();
-
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, Eventos_Charlas)
-                        .commit();
-            }
-        });
-
         return view;
     }
 }

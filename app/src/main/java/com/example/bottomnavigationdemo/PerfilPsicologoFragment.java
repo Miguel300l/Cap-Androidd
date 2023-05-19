@@ -18,20 +18,6 @@ public class PerfilPsicologoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_psicologo, container, false);
 
-        Button btnSolicitarcharla = (Button) view.findViewById(R.id.btnSolicitarcharla);
-        btnSolicitarcharla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment_charlass perfilPsicologo = new Fragment_charlass();
-
-                FragmentManager fragmentManager = getFragmentManager();
-
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, perfilPsicologo)
-                        .commit();
-            }
-        });
-
         return view;
     }
 }
