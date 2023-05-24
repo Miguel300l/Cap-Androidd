@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/login1"
-    android:id="@+id/LoginAppCap"
+    android:id="@+id/LoginAppCap2"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -95,7 +95,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/loginButton"
+                android:id="@+id/loginButton2"
                 android:text="INICIAR SESION"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"

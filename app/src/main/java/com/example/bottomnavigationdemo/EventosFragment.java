@@ -19,5 +19,6 @@ public class EventosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_eventos, container, false);
 
         return view;
+
     }
 }

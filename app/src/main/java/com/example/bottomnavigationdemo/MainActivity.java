@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.bottomnavigationdemo.adapter.EventosAdapter;
@@ -33,26 +34,38 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new EventosFragment());
+        //replaceFragment(new EventosFragment());
+
+
+        //Reemplaza Login como vista Principal
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        //replaceFragment(new Login());
+        // binding.bottomNavigationView.setVisibility(View.GONE);
+        // binding.bottomNavigationView.setVisibility(View.VISIBLE);
+
+
 
         recyclerView = findViewById(R.id.rv_Eventos);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
         showverEventos();
-
-
 
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.eventos:
                     replaceFragment(new EventosFragment());
+
                     break;
+
                 case R.id.psicologoss:
                     replaceFragment(new Psicologos());
                     break;
@@ -62,26 +75,36 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.pqrs:
                     replaceFragment(new SugerenciasFragment());
                     break;
-
                 case R.id.config_generall:
                     replaceFragment(new Config_general());
                     break;
                 case R.id.configuraciones:
                     replaceFragment(new Configuraciones());
                     break;
-
                 case R.id.enfermeros:
                     replaceFragment(new Fragment_Enfermeros());
                     break;
-
                 case R.id.vwConfigPerfil:
                     replaceFragment(new ConfigPerfil());
                     break;
-
             }
+
+            item.setChecked(true); // Set the selected item as checked
 
             return true;
         });
+    }
+
+
+    private  void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
+
+
+
+
 
     }
 
@@ -109,12 +132,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private  void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-    }
+
+
 
 
 
