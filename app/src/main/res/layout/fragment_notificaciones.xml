@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTintMode="src_atop"
     android:orientation="vertical"
-    tools:context=".notificaciones">
+    tools:context=".Notificaciones">
 
     <TextView
         android:id="@+id/textView"

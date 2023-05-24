@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/enfermeros"
-    android:background="@color/azul_oscuro"
+    android:background="@drawable/fondo"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment_Enfermeros">
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="226dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/azul_oscuro"
+
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -56,6 +56,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:padding="7dp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -79,7 +80,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:text="Juliana Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -89,9 +90,10 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:padding="7dp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -115,11 +117,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:text="Juliana Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -127,14 +132,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/azul_oscuro"
+
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:padding="7dp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -158,10 +164,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur"
+                        android:text="Juliana Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
 
                 </LinearLayout>
 
@@ -170,6 +177,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:padding="7dp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -193,10 +201,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur"
+                        android:text="Juliana Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
             </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Psicologos"
-    android:background="@color/azul_oscuro"
+    android:background="@drawable/fondo"
     tools:context=".EventosFragment">
 
     <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="226dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/azul_oscuro"
+
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -57,13 +57,15 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="7dp">
 
                     <ImageView
-                        android:id="@+id/imgPsicologo1"
+                        android:id="@+id/imgPsicologo2"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
+
                         android:scaleType="fitCenter"
                         android:src="@drawable/psicologo" />
 
@@ -79,7 +81,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:text="Julian Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -89,17 +91,19 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="7dp">
 
                     <ImageView
-                        android:id="@+id/imgPsicologo2"
+                        android:id="@+id/imgPsicologo1"
                         android:layout_width="166dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
+
                         android:scaleType="fitCenter"
                         android:src="@drawable/psicologo" />
 
@@ -115,11 +119,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                        android:text="Julian Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -127,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/azul_oscuro"
+
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -136,7 +143,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="7dp">
 
                     <ImageView
                         android:id="@+id/imgPsicologo3"
@@ -158,7 +166,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur"
+                        android:text="Julian Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -171,7 +179,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/border"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="7dp">
 
                     <ImageView
                         android:id="@+id/imgPsicologo4"
@@ -193,7 +202,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet consectetur"
+                        android:text="Julian Valencia"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />

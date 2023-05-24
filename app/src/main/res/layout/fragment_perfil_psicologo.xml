@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/perfilPsicologo"
     android:layout_width="match_parent"
-    android:background="@color/azul_oscuro"
+    android:background="@drawable/fondo"
     android:layout_height="match_parent"
     tools:context=".PerfilPsicologoFragment">
 
@@ -44,8 +44,8 @@
 
         <ImageView
             android:id="@+id/imgPsicologo"
-            android:layout_width="127dp"
-            android:layout_height="112dp"
+            android:layout_width="140dp"
+            android:layout_height="130dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="@drawable/border"
