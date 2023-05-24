@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     tools:context=".Charla"
+    android:background="@drawable/fondo"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,82 +16,68 @@
 
         <FrameLayout
             android:id="@+id/containerSolicitarCharlas1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="387dp"
+            android:layout_height="298dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/border"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SOLICITA TU CHARLA"
-                android:id="@+id/loginText"
-                android:textSize="36sp"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/azul_oscuro"/>
+                android:textColor="@color/azul_oscuro"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="245dp"
                 android:layout_marginTop="80dp"
-                android:background="@drawable/border"
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:layout_width="316dp"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    tools:context=".MainActivity">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/menu"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Selecciona tu jornada">
-
-                        <AutoCompleteTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/menu_textview"
-                        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+                    <EditText
+                        android:id="@+id/editTextDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:text="Selecciona una opción"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/purple_200" />
+                        android:focusable="false"
+                        android:hint="Select date and time"
+                        android:inputType="none" />
 
+                    <EditText
+                        android:id="@+id/editTextMotive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/editTextDateTime"
+                        android:layout_marginTop="16dp"
+                        android:hint="Enter motive" />
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/editTextMotive"
+                        android:layout_marginTop="16dp"
+                        android:text="Submit" />
 
-                <Button
-                    android:id="@+id/btn_enviar_solicitud1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/verde_claro"
-                    android:onClick="irCharlaEnviada"
-                    android:text="Enviar solicitud"
-                    android:textColor="@android:color/white"
-                    android:textSize="16dp" />
+                </RelativeLayout>
 
             </LinearLayout>
 
