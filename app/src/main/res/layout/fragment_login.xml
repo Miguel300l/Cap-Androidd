@@ -97,6 +97,7 @@
                 android:layout_height="60dp"
                 android:id="@+id/loginButton"
                 android:text="INICIAR SESION"
+                android:onClick="LoginUser"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/azul_oscuro"
@@ -119,3 +120,5 @@
         android:layout_marginBottom="20dp"/>
 
 </LinearLayout>
+
+

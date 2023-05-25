@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/login1"
-    android:id="@+id/LoginAppCap2"
+    android:id="@+id/LoginApp2"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
