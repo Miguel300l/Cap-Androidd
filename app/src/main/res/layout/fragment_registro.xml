@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/LayoutRegister"
     android:background="@drawable/regis"
     tools:context=".MainActivity">
 
