@@ -2,163 +2,140 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vwConfigPerfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/vwConfigPerfil"
-    android:background="@color/azul_oscuro"
-    tools:context=".MainActivity">
+    android:background="@drawable/fondo"
+    tools:context=".ConfigPerfil">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profile_config_layout"
-        android:layout_width="370dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="31dp"
-        android:background="@drawable/border"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
             android:id="@+id/txtConfigPerfil"
-            android:layout_width="270dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:gravity="center"
+            android:paddingHorizontal="40dp"
             android:text="@string/Configuracion_De_Perfil"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/profile_config_layout" />
+            android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/check"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="check"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ok"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.949"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.491"></ImageButton>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/profile_config_layout2"
         android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:layout_marginHorizontal="21dp"
+        android:layout_height="350dp"
+        android:layout_marginHorizontal="30dp"
         android:background="@drawable/border"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_config_layout"
-        app:layout_constraintVertical_bias="0.495">
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        app:layout_constraintVertical_bias="0.352">
 
 
         <ImageButton
             android:id="@+id/imgUser"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="img user"
-            android:scaleType="fitCenter"
-            android:src="@drawable/user"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.531"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.053"></ImageButton>
-
-        <TextView
-            android:id="@+id/txtNameUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@drawable/border"
-            android:contentDescription="@string/name_of_user"
-            android:text="@string/name_of_user"
-            android:textColor="@color/black"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.364"></TextView>
+            android:background="@android:color/darker_gray"
+            android:contentDescription="img user"
+            android:scaleType="fitCenter" />
 
-        <ImageButton
-            android:id="@+id/ImgEdit"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="30dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="editar"
-            android:scaleType="fitCenter"
-            android:src="@drawable/editar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.877"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.34" />
-
-
-        <TextView
-            android:id="@+id/txtNameFicha"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="120dp"
-            android:background="@drawable/border"
-            android:contentDescription="@string/nombre_ficha"
-            android:text="@string/nombre_ficha"
-            android:textColor="@color/black"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameUser" />
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtNumberFicha"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtNameUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/border"
+                android:contentDescription="@string/name_of_user"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Nombre de Usuario" />
+
+            <ImageButton
+                android:id="@+id/ImgEdit"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity=""
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="editar"
+                android:scaleType="fitCenter"
+                android:src="@drawable/editar" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/border"
-            android:contentDescription="@string/numero_ficha"
-            android:text="@string/numero_ficha"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameUser" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtNameFicha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border"
+                android:contentDescription="@string/nombre_ficha"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="@string/nombre_ficha" />
+
+            <TextView
+                android:id="@+id/txtNumberFicha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border"
+                android:contentDescription="@string/numero_ficha"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="@string/numero_ficha" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtConfigPrivacidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="@drawable/border"
             android:text="@string/configuracio_privacidad"
             android:textColor="@color/black"
-            android:textSize="27sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtNumberFicha" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
