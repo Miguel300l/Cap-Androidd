@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/azul_oscuro"
     tools:context=".Charla"
+    android:background="@drawable/fondo"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,205 +13,71 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
+
         <FrameLayout
             android:id="@+id/containerSolicitarCharlas1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="387dp"
+            android:layout_height="298dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/border"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:layout_width="194dp"
-                android:layout_height="53dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="21dp"
-                android:background="@color/verde_claro"
-                android:gravity="center"
-                android:text="Solicitar Charlas"
-                android:textColor="#FFFFFF"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/loginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOLICITA TU CHARLA"
+                android:textAlignment="center"
+                android:textColor="@color/azul_oscuro"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="245dp"
                 android:layout_marginTop="80dp"
-                android:background="@drawable/border"
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:text="Por favor llenar los siguientes campos de la forma adecuada para poder procesar tu solicitud"
-                    android:textColor="#000000"
-                    android:textSize="18dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/nombreSolicitarCharlas"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            app:placeholderText="Escriba tu Nombre"
-                            android:hint="Nombre"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/correoSolicitarCharlas"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            android:hint="Correo"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/fichaSolicitarCharlas"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:hint="# Ficha"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="316dp"
-                    android:layout_marginStart="7dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border"
-                    android:padding="12dp"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spinner_jornada"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:hint="# Ficha"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/border"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    tools:context=".Charla">
 
                     <EditText
+                        android:id="@+id/editTextDateTime"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:background="@drawable/border"
-                        android:gravity="start"
-                        android:hint="Cuentanos el motivo de tu cita"
-                        android:padding="50dp"
-                        android:textColor="#000000" />
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Selecciona fecha y hora"
+                        android:inputType="none" />
 
-                </LinearLayout>
+                    <EditText
+                        android:id="@+id/editTextMotive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/editTextDateTime"
+                        android:layout_marginTop="16dp"
+                        android:hint="Motivo de tu cita" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/border"
-                    android:text="⬆️ Este campo no es obligatorio ⬆️"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/editTextMotive"
+                        android:layout_marginTop="16dp"
+                        android:text="Solicitar" />
 
-                <Button
-                    android:id="@+id/btn_enviar_solicitud1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/verde_claro"
-                    android:onClick="irCharlaEnviada"
-                    android:text="Enviar solicitud"
-                    android:textColor="@android:color/white"
-                    android:textSize="16dp" />
+                </RelativeLayout>
 
             </LinearLayout>
 
