@@ -59,7 +59,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/usernameEditText"
+                        android:id="@+id/login_username"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +85,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/passwordEditText"
+                        android:id="@+id/login_password"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +95,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/loginButton2"
+                android:id="@+id/login_button"
                 android:text="INICIAR SESION"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
@@ -114,7 +114,7 @@
         android:text="¿no estas logueado? Registrate Ahora"
         android:textSize="14sp"
         android:textAlignment="center"
-        android:id="@+id/textRegistrarD"
+        android:id="@+id/signupRedirectText"
         android:textColor="@color/black"
         android:layout_marginBottom="20dp"/>
 
