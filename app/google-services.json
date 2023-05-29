@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14048685653",
+    "project_id": "ejemplonotificacionescap-3631c",
+    "storage_bucket": "ejemplonotificacionescap-3631c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14048685653:android:9edfdfd5475daa5c90eedc",
+        "android_client_info": {
+          "package_name": "com.example.bottomnavigationdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEGU3v2-RKmM020-Ih6bdGPwoHphVv6dk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
