@@ -35,6 +35,7 @@ public class Login2 extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
+    TextView TextoRePro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class Login2 extends AppCompatActivity {
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
+        TextoRePro = findViewById(R.id.TextoRePro);
         loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +63,14 @@ public class Login2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login2.this, Registro.class);
+                startActivity(intent);
+            }
+        });
+
+        TextoRePro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login2.this, RegistroProfesional.class);
                 startActivity(intent);
             }
         });

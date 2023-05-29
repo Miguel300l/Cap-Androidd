@@ -111,10 +111,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="¿no estas logueado? Registrate Ahora"
+        android:text="¿no estas logueado? Registrate ahora como aprendiz"
         android:textSize="14sp"
         android:textAlignment="center"
         android:id="@+id/signupRedirectText"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="¿Eres un profesional ctpi? Registrate como profesional"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:id="@+id/TextoRePro"
         android:textColor="@color/black"
         android:layout_marginBottom="20dp"/>
 
