@@ -70,6 +70,7 @@ public class RegistroProfesional extends AppCompatActivity {
         rolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signupRol.setAdapter(rolAdapter);
 
+
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
