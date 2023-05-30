@@ -17,7 +17,7 @@
         <FrameLayout
             android:id="@+id/containerSolicitarCharlas1"
             android:layout_width="387dp"
-            android:layout_height="298dp"
+            android:layout_height="400dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/border"
@@ -37,7 +37,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="245dp"
+                android:layout_height="300dp"
                 android:layout_marginTop="80dp"
                 android:orientation="vertical"
                 android:padding="16dp"
@@ -45,12 +45,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp"
-                    tools:context=".Charla">
 
                     <EditText
                         android:id="@+id/editTextDateTime"
@@ -61,23 +55,53 @@
                         android:hint="Selecciona fecha y hora"
                         android:inputType="none" />
 
-                    <EditText
-                        android:id="@+id/editTextMotive"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/border"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="16dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextDateTime"
-                        android:layout_marginTop="16dp"
-                        android:hint="Motivo de tu cita" />
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:hint="TIPO">
 
-                    <Button
-                        android:id="@+id/buttonSubmit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextMotive"
-                        android:layout_marginTop="16dp"
-                        android:text="Solicitar" />
+                        <Spinner
+                            android:id="@+id/signup_tipo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/tipos_array" />
 
-                </RelativeLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/editTextMotive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextDateTime"
+                    android:layout_marginTop="16dp"
+                    android:hint="Motivo de tu cita"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:gravity="top|start" />
+
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextMotive"
+                    android:layout_marginTop="16dp"
+                    android:text="Solicitar" />
 
             </LinearLayout>
 
