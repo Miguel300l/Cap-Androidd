@@ -30,27 +30,6 @@
     <string name="centro_privacidad">Centro de Privacidad</string>
     <string name="eliminar_cuenta">Eliminar mi cuenta</string>
     <string name="Configuracion">Configuracion</string>
-    <string-array name="jornada_options">
-        <item>Mañana</item>
-        <item>Tarde</item>
-        <item>Noche</item>
-    </string-array>
-
-    <string-array name="spinner_options">
-        <item>Tipo de Documento</item>
-        <item>Cedula de ciudadania</item>
-        <item>Tarjeta de identidadd</item>
-        <!-- Agrega más opciones según sea necesario -->
-    </string-array>
-
-    <string-array name="Genero">
-        <item>Elija su genero</item>
-        <item>Femenino</item>
-        <item>Masculino</item>
-
-        <!-- Agrega más opciones según sea necesario -->
-    </string-array>
-
 
         <string-array name="tipos_array">
             <item>Cedula de ciudadania</item>
@@ -62,5 +41,10 @@
             <item>Femenino</item>
             <item>Otro</item>
         </string-array>
+
+    <string-array name="profesion_array">
+        <item>profesional</item>
+    </string-array>
+
 
 </resources>

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/login1"
-    android:id="@+id/LoginAppCap"
+    android:id="@+id/LoginApp2"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -59,7 +59,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/UsuarioLogin"
+                        android:id="@+id/login_username"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +85,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ContraseñaLogin"
+                        android:id="@+id/login_password"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -95,9 +95,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/loginButton"
+                android:id="@+id/login_button"
                 android:text="INICIAR SESION"
-                android:onClick="LoginUser"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/azul_oscuro"
@@ -112,13 +111,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="¿no estas logueado? Registrate Ahora"
+        android:text="Registro Aprendiz"
         android:textSize="14sp"
         android:textAlignment="center"
-        android:id="@+id/signupText"
+        android:id="@+id/signupRedirectText"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Registro Profesional"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:id="@+id/TextoRePro"
         android:textColor="@color/black"
         android:layout_marginBottom="20dp"/>
 
 </LinearLayout>
-
 
