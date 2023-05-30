@@ -33,13 +33,13 @@ import okhttp3.Response;
 
 public class RegistroProfesional extends AppCompatActivity {
 
+
     EditText signupPassword, signupNombres, signupApellidos,
             signupNumeroDocumento, signupCorreo, signupNumTelefono, signupProfesion;
 
     Spinner signupTipo, signupGenero, signupRol;
     TextView loginRedirectText;
     Button signupButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
