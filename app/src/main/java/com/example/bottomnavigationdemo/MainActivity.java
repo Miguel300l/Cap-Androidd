@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -151,9 +152,12 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.option2:
                         // Acción para la opción 2
+                        replaceFragment(new ConfigPerfil()); // Reemplazar con ConfigPerfil fragment
                         return true;
                     case R.id.option3:
-                        // Acción para la opción 3
+
+                        startActivity(new Intent(MainActivity.this, Login2.class)); // Iniciar Login2 actividad
+                        finish(); // Finalizar la actividad actual
                         return true;
                     default:
                         return false;
