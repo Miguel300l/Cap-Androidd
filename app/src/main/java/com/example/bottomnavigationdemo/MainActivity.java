@@ -69,16 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Fragment_charlass());
                     break;
 
-                case R.id.pqrs:
-                    replaceFragment(new SugerenciasFragment());
-                    break;
-
                 case R.id.config_generall:
                     replaceFragment(new Config_general());
-                    break;
-
-                case R.id.configuraciones:
-                    replaceFragment(new Configuraciones());
                     break;
 
                 case R.id.enfermeros:

@@ -16,18 +16,9 @@
 
        <item
            android:id="@+id/psicologoss"
-           android:title="PSICOLOGOS"
+           android:title="PROFESIONALES"
            android:icon="@drawable/psychology"
            android:iconTint="@color/verde_claro"
            />
 
-       <item
-           android:id="@+id/pqrs"
-           android:title="@string/sugerencias"
-           android:icon="@drawable/baseline_quiz_24" />
-
-       <item
-           android:id="@+id/configuraciones"
-           android:title="CONFIGURACIONES"
-           android:icon="@drawable/baseline_quiz_24"/>
 </menu>

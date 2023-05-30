@@ -1,10 +1,10 @@
 package com.example.bottomnavigationdemo;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,8 +23,6 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,8 +30,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Registro extends AppCompatActivity {
-
-
 
     Spinner spnProfesionales;
     ArrayAdapter<String> adapter;
@@ -83,7 +79,7 @@ public class Registro extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Obtener los datos ingresados por el usuario
                 String contrasena = signupPassword.getText().toString();
                 String nombres = signupNombres.getText().toString();
                 String apellidos = signupApellidos.getText().toString();
@@ -97,6 +93,12 @@ public class Registro extends AppCompatActivity {
                 // Verificar si el correo ingresado es válido
                 if (!isValidEmail(correo)) {
                     Toast.makeText(Registro.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Verificar la longitud mínima de la contraseña y su formato
+                if (contrasena.length() < 8 || !isValidPassword(contrasena)) {
+                    Toast.makeText(Registro.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -211,5 +213,11 @@ public class Registro extends AppCompatActivity {
     public static boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         return email.matches(emailRegex);
+    }
+
+    // Verificar si la contraseña cumple con los requisitos mínimos utilizando una expresión regular
+    public static boolean isValidPassword(String password) {
+        String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@.#$%^&+=!]).*$";
+        return password.matches(passwordRegex);
     }
 }

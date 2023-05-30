@@ -30,9 +30,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
 public class RegistroProfesional extends AppCompatActivity {
-
 
     EditText signupPassword, signupNombres, signupApellidos,
             signupNumeroDocumento, signupCorreo, signupNumTelefono, signupProfesion;
@@ -40,6 +38,7 @@ public class RegistroProfesional extends AppCompatActivity {
     Spinner signupTipo, signupGenero, signupRol;
     TextView loginRedirectText;
     Button signupButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +56,7 @@ public class RegistroProfesional extends AppCompatActivity {
         signupGenero = findViewById(R.id.signup_genero);
         signupRol = findViewById(R.id.signupRol);
         signupProfesion = findViewById(R.id.signupProfesion);
+
         // Configurar los adaptadores para los spinners
         ArrayAdapter<CharSequence> tipoAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_array, android.R.layout.simple_spinner_item);
         tipoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,7 +67,7 @@ public class RegistroProfesional extends AppCompatActivity {
         signupGenero.setAdapter(generoAdapter);
 
         ArrayAdapter<CharSequence> rolAdapter = ArrayAdapter.createFromResource(this, R.array.profesion_array, android.R.layout.simple_spinner_item);
-        generoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signupRol.setAdapter(rolAdapter);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +75,11 @@ public class RegistroProfesional extends AppCompatActivity {
             public void onClick(View view) {
                 if (!isValidEmail(signupCorreo.getText().toString())) {
                     Toast.makeText(RegistroProfesional.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!isValidPassword(signupPassword.getText().toString())) {
+                    Toast.makeText(RegistroProfesional.this, "Contraseña inválida. Debe contener al menos una letra, un número y un carácter especial", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -160,5 +165,11 @@ public class RegistroProfesional extends AppCompatActivity {
 
     private boolean isValidEmail(CharSequence email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isValidPassword(String password) {
+        // Verifica que la contraseña tenga al menos una letra, un número y un carácter especial
+        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@.#$%^&+=]).{8,}$";
+        return password.matches(passwordPattern);
     }
 }
