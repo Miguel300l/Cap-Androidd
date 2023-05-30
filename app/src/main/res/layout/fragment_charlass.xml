@@ -45,64 +45,62 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
-                        android:id="@+id/editTextDateTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:focusable="false"
-                        android:hint="Selecciona fecha y hora"
-                        android:inputType="none" />
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border">
 
-
-                <Spinner
-                    android:id="@+id/spnProfesionales"
+                <EditText
+                    android:id="@+id/editTextDateTime"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="Selecciona fecha y hora"
+                    android:inputType="none" />
+
+            </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/border"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="4dp"
-                    android:padding="16dp"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <Spinner
+                        android:id="@+id/spnProfesionales"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:hint="TIPO">
-
-                        <Spinner
-                            android:id="@+id/signup_tipo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/tipos_array" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border">
 
                 <EditText
                     android:id="@+id/editTextMotive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextDateTime"
-                    android:layout_marginTop="16dp"
+                    android:gravity="top|start"
                     android:hint="Motivo de tu cita"
                     android:inputType="textMultiLine"
-                    android:minLines="3"
-                    android:gravity="top|start" />
+                    android:minLines="3" />
+
+            </LinearLayout>
 
                 <Button
+                    android:layout_gravity="center"
                     android:id="@+id/buttonSubmit"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextMotive"
                     android:text="Solicitar" />

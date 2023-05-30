@@ -221,7 +221,6 @@ public class Fragment_charlass extends Fragment {
     }
 
     void mensajeToast(String mensaje) {
-        Toast toast1 = Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG);
-        toast1.show();
+
     }
 }
