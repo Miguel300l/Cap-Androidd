@@ -1,23 +1,29 @@
 package com.example.bottomnavigationdemo;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.bottomnavigationdemo.entity.UserCharla;
+import com.example.bottomnavigationdemo.service.ServiceCharla;
+import com.example.bottomnavigationdemo.util.Connection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,13 +34,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Fragment_charlass extends Fragment {
 
     private EditText editTextDateTime;
     private Calendar calendar;
+
+    private Spinner spnProfesionales;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> profesionales = new ArrayList<>();
+
+    private ServiceCharla serviceCharla;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,12 +71,18 @@ public class Fragment_charlass extends Fragment {
         // Agregar el OnClickListener al botón de enviar
         Button sendButton = view.findViewById(R.id.buttonSubmit);
         sendButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-
+                // Aquí puedes llamar a tu AsyncTask para realizar la solicitud HTTP
             }
         });
+
+        spnProfesionales = view.findViewById(R.id.spnProfesionales);
+        adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, profesionales);
+        spnProfesionales.setAdapter(adapter);
+
+        serviceCharla = Connection.getConnecion().create(ServiceCharla.class);
+        cargaData();
 
         return view;
     }
@@ -93,12 +117,6 @@ public class Fragment_charlass extends Fragment {
 
         datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
         datePickerDialog.show();
-    }
-
-    private boolean isValidInput(String input) {
-        // Expresión regular para letras y números
-        String regex = "^[a-zA-Z0-9]+$";
-        return input.matches(regex);
     }
 
     private class HttpRequestTask extends AsyncTask<String, Void, String> {
@@ -165,5 +183,45 @@ public class Fragment_charlass extends Fragment {
                 Toast.makeText(getActivity(), "Solicitud enviada exitosamente", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void cargaData() {
+        Call<List<UserCharla>> call = serviceCharla.listaProfesionales();
+        call.enqueue(new Callback<List<UserCharla>>() {
+            @Override
+            public void onResponse(Call<List<UserCharla>> call, Response<List<UserCharla>> response) {
+                mensajeToast("Acceso exitoso al servicio REST");
+                if (response.isSuccessful()) {
+                    mensajeToast("Acceso exitoso al servicio REST");
+                    List<UserCharla> lstProfesionales = response.body();
+                    for (UserCharla userCharla : lstProfesionales) {
+                        String nombreCompleto = userCharla.getNombres() + " " + userCharla.getApellidos() + " - " + userCharla.getProfesion();
+                        profesionales.add(nombreCompleto);
+                    }
+                    adapter.notifyDataSetChanged();
+
+                } else {
+                    mensajeToast("Error de acceso al servicio REST");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserCharla>> call, Throwable t) {
+                mensajeToast("Error de acceso al servicio REST");
+            }
+        });
+    }
+
+    public void mensajeAlert(String titulo, String msg) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+        alertDialog.setMessage(msg);
+        alertDialog.setTitle(titulo);
+        alertDialog.setCancelable(true);
+        alertDialog.show();
+    }
+
+    void mensajeToast(String mensaje) {
+        Toast toast1 = Toast.makeText(getContext(), mensaje, Toast.LENGTH_LONG);
+        toast1.show();
     }
 }

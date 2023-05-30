@@ -37,14 +37,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="80dp"
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
 
                     <EditText
                         android:id="@+id/editTextDateTime"
@@ -54,6 +53,12 @@
                         android:focusable="false"
                         android:hint="Selecciona fecha y hora"
                         android:inputType="none" />
+
+
+                <Spinner
+                    android:id="@+id/spnProfesionales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
