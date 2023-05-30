@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BottomNavigation Demo</string>
+    <string name="app_name">CAP</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sugerencias">SUGERENCIAS</string>
@@ -50,4 +50,17 @@
 
         <!-- Agrega más opciones según sea necesario -->
     </string-array>
+
+
+        <string-array name="tipos_array">
+            <item>Cedula de ciudadania</item>
+            <item>Tarjeta de identidad</item>
+        </string-array>
+
+        <string-array name="generos_array">
+            <item>Masculino</item>
+            <item>Femenino</item>
+            <item>Otro</item>
+        </string-array>
+
 </resources>
