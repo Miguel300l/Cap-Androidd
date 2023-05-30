@@ -45,7 +45,6 @@ public class RegistroProfesional extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_profesional);
 
-
         signupPassword = findViewById(R.id.signup_passwordPro);
         signupNombres = findViewById(R.id.signup_nombresPro);
         signupApellidos = findViewById(R.id.signup_apellidosPro);
