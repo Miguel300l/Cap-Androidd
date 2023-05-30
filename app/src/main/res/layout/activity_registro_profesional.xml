@@ -112,7 +112,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/signup_correo"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,7 +138,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/signup_passwordPro"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,7 +193,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/signup_numero_documento"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -241,7 +244,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/signup_num_telefono"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 

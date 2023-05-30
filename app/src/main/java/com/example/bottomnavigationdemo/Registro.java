@@ -1,5 +1,4 @@
 package com.example.bottomnavigationdemo;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +17,6 @@ import com.example.bottomnavigationdemo.model.Programa;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.UserService;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,16 +50,12 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_registro);
 
-
         spnProfesionales = findViewById(R.id.signupPrograma);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, profesionales);
         spnProfesionales.setAdapter(adapter);
 
-
-
         userService = ApiAprendiz.getAprendiz().create(UserService.class);
         cargaData();
-
 
         signupPassword = findViewById(R.id.signup_password);
         signupNombres = findViewById(R.id.signup_nombres);
@@ -97,6 +91,12 @@ public class Registro extends AppCompatActivity {
                 String correo = signupCorreo.getText().toString();
                 String numTelefono = signupNumTelefono.getText().toString();
                 String programa = signupPrograma.getSelectedItem().toString();
+
+                // Verificar si el correo ingresado es válido
+                if (!isValidEmail(correo)) {
+                    Toast.makeText(Registro.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Crea el cuerpo de la solicitud POST como formulario multipart
                 RequestBody requestBody = new MultipartBody.Builder()
@@ -166,7 +166,6 @@ public class Registro extends AppCompatActivity {
         });
     }
 
-
     public void cargaData(){
         retrofit2.Call<List<Programa>> call = userService.listaProfesionales();
         call.enqueue(new retrofit2.Callback<List<Programa>>() {
@@ -181,8 +180,7 @@ public class Registro extends AppCompatActivity {
                         profesionales.add(nombreCompleto);
                     }
                     adapter.notifyDataSetChanged();
-
-                }else{
+                } else {
                     mensajeToast("Error de acceso al servicio REST");
                 }
             }
@@ -207,4 +205,9 @@ public class Registro extends AppCompatActivity {
         toast1.show();
     }
 
+    // Verificar si el correo es válido utilizando una expresión regular
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return email.matches(emailRegex);
+    }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -73,6 +74,10 @@ public class RegistroProfesional extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!isValidEmail(signupCorreo.getText().toString())) {
+                    Toast.makeText(RegistroProfesional.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 String contrasena = signupPassword.getText().toString();
                 String nombres = signupNombres.getText().toString();
@@ -154,4 +159,7 @@ public class RegistroProfesional extends AppCompatActivity {
         });
     }
 
+    private boolean isValidEmail(CharSequence email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 }
