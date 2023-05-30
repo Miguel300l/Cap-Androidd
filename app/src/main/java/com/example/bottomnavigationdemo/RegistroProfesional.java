@@ -84,6 +84,7 @@ public class RegistroProfesional extends AppCompatActivity {
                     return;
                 }
 
+
                 String contrasena = signupPassword.getText().toString();
                 String nombres = signupNombres.getText().toString();
                 String apellidos = signupApellidos.getText().toString();
@@ -115,6 +116,7 @@ public class RegistroProfesional extends AppCompatActivity {
                         .url("https://backend-cap-273v.vercel.app/registrarProfesional")
                         .post(requestBody)
                         .build();
+
 
                 // Crea el cliente HTTP
                 OkHttpClient client = new OkHttpClient();

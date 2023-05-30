@@ -12,7 +12,6 @@
            android:title="CHARLA"
            android:icon="@drawable/baseline_group_24" />
 
-
        <item
            android:id="@+id/psicologoss"
            android:title="PROFESIONALES"

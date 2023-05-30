@@ -67,6 +67,7 @@ public class Registro extends AppCompatActivity {
         signupGenero = findViewById(R.id.signup_genero);
         signupPrograma = findViewById(R.id.signupPrograma);
 
+
         // Configurar los adaptadores para los spinners
         ArrayAdapter<CharSequence> tipoAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_array, android.R.layout.simple_spinner_item);
         tipoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -196,6 +197,7 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+
 
     public void mensajeAlert(String titulo, String msg){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
