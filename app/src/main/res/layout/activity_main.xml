@@ -29,7 +29,7 @@
             app:backgroundTint="@android:color/transparent"
             app:maxImageSize="50dp"
             android:outlineProvider="none"
-
+            app:tint="@android:color/darker_gray"
             app:srcCompat="@drawable/baseline_settings_24"
             />
     </FrameLayout>

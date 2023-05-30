@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login1"
+    android:background="@drawable/fondoo"
     android:id="@+id/LoginApp2"
     tools:context=".MainActivity">
 
