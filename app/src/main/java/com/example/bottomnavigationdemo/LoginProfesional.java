@@ -1,17 +1,12 @@
 package com.example.bottomnavigationdemo;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,14 +25,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
 public class LoginProfesional extends AppCompatActivity {
-
 
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
     TextView TextoRePro;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +43,8 @@ public class LoginProfesional extends AppCompatActivity {
         signupRedirectText = findViewById(R.id.signupRedirectText);
         TextoRePro = findViewById(R.id.TextoRePro);
         loginButton = findViewById(R.id.login_button);
+
+        sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,10 +136,10 @@ public class LoginProfesional extends AppCompatActivity {
                                 JSONObject responseJson = new JSONObject(responseBody);
                                 String token = responseJson.getString("token");
 
-                                // Guardar el token en SharedPreferences
-                                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                // Guardar el token y el estado de inicio de sesión en SharedPreferences
+                                SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("token", token);
+                                editor.putBoolean("estado_inicio_sesion", true);
                                 editor.apply();
 
                                 // Iniciar sesión exitoso
@@ -165,5 +161,4 @@ public class LoginProfesional extends AppCompatActivity {
             }
         });
     }
-
 }
