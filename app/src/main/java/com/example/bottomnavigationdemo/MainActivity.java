@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +23,12 @@ import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.ApiEventos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     private List<Eventos> verEventosCronograma;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     private FloatingActionButton floatingActionButton;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new EventosFragment());
-
-        // Reemplaza Login como vista Principal
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
         recyclerView = findViewById(R.id.rv_Eventos);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
@@ -60,37 +57,31 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.eventos:
                     replaceFragment(new EventosFragment());
                     break;
-
                 case R.id.psicologoss:
                     replaceFragment(new Psicologos());
                     break;
-
                 case R.id.charla:
                     replaceFragment(new Fragment_charlass());
                     break;
-
                 case R.id.config_generall:
                     replaceFragment(new Config_general());
                     break;
-
                 case R.id.enfermeros:
                     replaceFragment(new Fragment_Enfermeros());
                     break;
-
                 case R.id.vwConfigPerfil:
                     replaceFragment(new ConfigPerfil());
                     break;
             }
-
             item.setChecked(true); // Set the selected item as checked
-
             return true;
         });
 
-        // Obtener referencia al botón flotante
         floatingActionButton = findViewById(R.id.flotantRRR);
 
-        // Agregar opciones al botón flotante
+        // Inicializar SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    // ...
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -115,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Eventos>> call, Response<List<Eventos>> response) {
                 if (response.isSuccessful()) {
                     verEventosCronograma = response.body();
-
                     Toast.makeText(MainActivity.this, "" + response.body(), Toast.LENGTH_LONG).show();
                     eventosAdapter = new EventosAdapter(verEventosCronograma, getApplicationContext());
                     recyclerView.setAdapter(eventosAdapter);
@@ -128,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void showOptionsMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this, floatingActionButton);
@@ -149,9 +135,8 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new ConfigPerfil()); // Reemplazar con ConfigPerfil fragment
                         return true;
                     case R.id.option3:
-
-                        startActivity(new Intent(MainActivity.this, Login2.class)); // Iniciar Login2 actividad
-                        finish(); // Finalizar la actividad actual
+                        // Acción para la opción 3
+                        closeSession(); // Cerrar sesión
                         return true;
                     default:
                         return false;
@@ -162,5 +147,16 @@ public class MainActivity extends AppCompatActivity {
         // Mostrar el menú
         popupMenu.show();
     }
-}
 
+    private void closeSession() {
+        // Limpiar SharedPreferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        // Redirigir al login
+        Intent intent = new Intent(MainActivity.this, Login2.class);
+        startActivity(intent);
+        finish();
+    }
+}
