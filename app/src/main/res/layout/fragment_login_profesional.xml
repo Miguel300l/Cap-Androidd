@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/fondoo"
-    android:id="@+id/LoginApp2"
+    android:id="@+id/LoginApp3"
     tools:context=".MainActivity">
 
 
@@ -34,9 +34,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inicio de sesion"
+                android:text="Inicio de sesion Profesional"
                 android:id="@+id/loginText"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/azul_oscuro"/>

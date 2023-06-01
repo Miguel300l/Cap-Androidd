@@ -16,12 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomNavigationDemo"
         tools:targetApi="31">
-        <activity
-            android:name=".RegistroProfesional"
-            android:exported="false" />
+
         <activity
             android:name=".LoginProfesional"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity
+            android:name=".RegistroProfesional"
+            android:exported="true" />
+
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.

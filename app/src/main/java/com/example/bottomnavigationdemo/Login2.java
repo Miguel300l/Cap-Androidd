@@ -31,6 +31,7 @@ public class Login2 extends AppCompatActivity {
     Button loginButton;
     TextView signupRedirectText;
     TextView TextoRePro;
+    TextView TextoRePro2;
     SharedPreferences sp;
 
     @Override
@@ -42,6 +43,7 @@ public class Login2 extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         TextoRePro = findViewById(R.id.TextoRePro);
+        TextoRePro2 = findViewById(R.id.TextoRePro2);
         loginButton = findViewById(R.id.login_button);
 
         sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -78,6 +80,14 @@ public class Login2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login2.this, RegistroProfesional.class);
+                startActivity(intent);
+            }
+        });
+
+        TextoRePro2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login2.this, LoginProfesional.class);
                 startActivity(intent);
             }
         });
