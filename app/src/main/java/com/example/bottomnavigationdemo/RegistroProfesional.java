@@ -172,7 +172,7 @@ public class RegistroProfesional extends AppCompatActivity {
 
     private boolean isValidPassword(String password) {
         // Verifica que la contraseña tenga al menos una letra, un número y un carácter especial
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@.#$%^&+=]).{8,}$";
+        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@.#$%¿)><(*´}{°|~`^&+=!?¡]).{8,}$";
         return password.matches(passwordPattern);
     }
 }

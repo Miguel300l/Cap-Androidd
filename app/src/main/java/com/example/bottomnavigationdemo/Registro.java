@@ -220,7 +220,7 @@ public class Registro extends AppCompatActivity {
 
     // Verificar si la contraseña cumple con los requisitos mínimos utilizando una expresión regular
     public static boolean isValidPassword(String password) {
-        String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@.#$%^&+=!]).*$";
+        String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@.#$%¿)><(*´}{°|~`^&+=!?¡]).*$";
         return password.matches(passwordRegex);
     }
 }
