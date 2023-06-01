@@ -31,6 +31,7 @@ public class LoginProfesional extends AppCompatActivity {
     Button loginButton;
     TextView signupRedirectText;
     TextView TextoRePro;
+    TextView TextoRePro3;
     SharedPreferences sp;
 
     @Override
@@ -42,6 +43,7 @@ public class LoginProfesional extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         TextoRePro = findViewById(R.id.TextoRePro);
+        TextoRePro3 = findViewById(R.id.TextoRePro3);
         loginButton = findViewById(R.id.login_button);
 
         sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -69,6 +71,13 @@ public class LoginProfesional extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginProfesional.this, RegistroProfesional.class);
+                startActivity(intent);
+            }
+        });
+        TextoRePro3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginProfesional.this, Login2.class);
                 startActivity(intent);
             }
         });
