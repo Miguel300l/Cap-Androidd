@@ -148,9 +148,19 @@ public class Login2 extends AppCompatActivity {
                                 // Guardar el token y el estado de inicio de sesión en SharedPreferences
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("token", token);
+                                editor.putString("correo", correo);
                                 editor.putBoolean("estado_inicio_sesion", true);
                                 editor.apply();
 
+                                // Verificar si el token y el correo se guardaron correctamente
+                                String savedToken = sp.getString("token", "");
+                                String savedCorreo = sp.getString("correo", "");
+                                if (!savedToken.isEmpty() && !savedCorreo.isEmpty()) {
+                                    Toast.makeText(Login2.this, "Token guardado correctamente: " + savedToken, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login2.this, "Correo guardado correctamente: " + savedCorreo, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Login2.this, "Error al guardar el token o el correo", Toast.LENGTH_SHORT).show();
+                                }
                                 // Iniciar sesión exitoso
                                 Toast.makeText(Login2.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 

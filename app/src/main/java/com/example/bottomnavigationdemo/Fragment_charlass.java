@@ -86,7 +86,6 @@ public class Fragment_charlass extends Fragment {
 
         return view;
     }
-
     private void showDateTimePicker() {
         final Calendar currentDate = Calendar.getInstance();
         final Calendar selectedDate = Calendar.getInstance();
@@ -97,6 +96,12 @@ public class Fragment_charlass extends Fragment {
                         selectedDate.set(Calendar.YEAR, year);
                         selectedDate.set(Calendar.MONTH, monthOfYear);
                         selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                        // Validar si la fecha seleccionada es anterior a la fecha actual
+                        if (selectedDate.before(currentDate)) {
+                            Toast.makeText(getActivity(), "La fecha seleccionada no puede ser anterior a la fecha actual", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
                         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
                                 new TimePickerDialog.OnTimeSetListener() {
@@ -118,7 +123,6 @@ public class Fragment_charlass extends Fragment {
         datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
         datePickerDialog.show();
     }
-
     private class HttpRequestTask extends AsyncTask<String, Void, String> {
         private static final String URL_STRING = "https://backend-cap-273v.vercel.app/crearSolicitud";
         private static final String DATE = "2023-05-22";
