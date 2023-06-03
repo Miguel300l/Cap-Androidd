@@ -4,7 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,12 +21,16 @@ import com.example.bottomnavigationdemo.model.Programa;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.UserService;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,8 +43,12 @@ public class RegistroProfesional extends AppCompatActivity {
             signupNumeroDocumento, signupCorreo, signupNumTelefono, signupProfesion;
 
     Spinner signupTipo, signupGenero, signupRol;
-    TextView loginRedirectText;
-    Button signupButton;
+    TextView loginRedirectText, imageUrlTextView;
+    Button signupButton, buttonSeleccionarImagen;
+
+    private Uri selectedImageUri;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +67,8 @@ public class RegistroProfesional extends AppCompatActivity {
         signupGenero = findViewById(R.id.signup_genero);
         signupRol = findViewById(R.id.signupRol);
         signupProfesion = findViewById(R.id.signupProfesion);
+        buttonSeleccionarImagen = findViewById(R.id.btn_select_image);
+        imageUrlTextView = findViewById(R.id.txt_selected_image);
 
         // Configurar los adaptadores para los spinners
         ArrayAdapter<CharSequence> tipoAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_array, android.R.layout.simple_spinner_item);
@@ -70,6 +83,12 @@ public class RegistroProfesional extends AppCompatActivity {
         rolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signupRol.setAdapter(rolAdapter);
 
+        buttonSeleccionarImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImagePicker();
+            }
+        });
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +103,6 @@ public class RegistroProfesional extends AppCompatActivity {
                     return;
                 }
 
-
                 String contrasena = signupPassword.getText().toString();
                 String nombres = signupNombres.getText().toString();
                 String apellidos = signupApellidos.getText().toString();
@@ -97,7 +115,7 @@ public class RegistroProfesional extends AppCompatActivity {
                 String rol = signupRol.getSelectedItem().toString();
 
                 // Crea el cuerpo de la solicitud POST como formulario multipart
-                RequestBody requestBody = new MultipartBody.Builder()
+                MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("contrasena", contrasena)
                         .addFormDataPart("nombres", nombres)
@@ -108,15 +126,33 @@ public class RegistroProfesional extends AppCompatActivity {
                         .addFormDataPart("correo", correo)
                         .addFormDataPart("numTelefono", numTelefono)
                         .addFormDataPart("rol", rol)
-                        .addFormDataPart("profesion", profesion)
-                        .build();
+                        .addFormDataPart("profesion", profesion);
+
+                if (selectedImageUri != null) {
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
+                        byte[] fileBytes = getBytes(inputStream);
+                        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), fileBytes);
+                        requestBodyBuilder.addFormDataPart("imgProfesional", "imgProfesional", requestBody);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(RegistroProfesional.this, "Error al leer el archivo de imagen", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        return;
+                    }
+                }
+
+                RequestBody requestBody = requestBodyBuilder.build();
 
                 // Crea la solicitud POST a la URL de Vercel
                 Request request = new Request.Builder()
                         .url("https://backend-cap-273v.vercel.app/registrarProfesional")
                         .post(requestBody)
                         .build();
-
 
                 // Crea el cliente HTTP
                 OkHttpClient client = new OkHttpClient();
@@ -145,7 +181,7 @@ public class RegistroProfesional extends AppCompatActivity {
                             public void run() {
                                 if (response.isSuccessful()) {
                                     Toast.makeText(RegistroProfesional.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(RegistroProfesional.this, com.example.bottomnavigationdemo.LoginProfesional.class);
+                                    Intent intent = new Intent(RegistroProfesional.this, LoginProfesional.class);
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(RegistroProfesional.this, "Error al registrar: " + responseBody, Toast.LENGTH_SHORT).show();
@@ -160,7 +196,7 @@ public class RegistroProfesional extends AppCompatActivity {
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistroProfesional.this, com.example.bottomnavigationdemo.LoginProfesional.class);
+                Intent intent = new Intent(RegistroProfesional.this, LoginProfesional.class);
                 startActivity(intent);
             }
         });
@@ -171,8 +207,32 @@ public class RegistroProfesional extends AppCompatActivity {
     }
 
     private boolean isValidPassword(String password) {
-        // Verifica que la contraseña tenga al menos una letra, un número y un carácter especial
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@.#$%¿)><(*´}{°|~`^&+=!?¡]).{8,}$";
+        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
         return password.matches(passwordPattern);
+    }
+
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    private byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            selectedImageUri = data.getData();
+            imageUrlTextView.setText(selectedImageUri.toString());
+        }
     }
 }
