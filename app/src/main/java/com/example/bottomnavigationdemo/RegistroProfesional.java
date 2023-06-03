@@ -207,7 +207,7 @@ public class RegistroProfesional extends AppCompatActivity {
     }
 
     private boolean isValidPassword(String password) {
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@._#$%¿)><(*´}{°|~`^&+=!?¡])(?=\\S+$).{8,}$";
         return password.matches(passwordPattern);
     }
 

@@ -1,10 +1,13 @@
 package com.example.bottomnavigationdemo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,12 +20,15 @@ import com.example.bottomnavigationdemo.model.Programa;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.UserService;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -40,8 +46,11 @@ public class Registro extends AppCompatActivity {
             signupNumeroDocumento, signupCorreo, signupNumTelefono;
 
     Spinner signupTipo, signupGenero, signupPrograma;
-    TextView loginRedirectText;
-    Button signupButton;
+    TextView loginRedirectText, imageUrlTextView, profileImageView;
+    Button signupButton, selectImageButton;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri selectedImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +75,8 @@ public class Registro extends AppCompatActivity {
         signupTipo = findViewById(R.id.signup_tipo);
         signupGenero = findViewById(R.id.signup_genero);
         signupPrograma = findViewById(R.id.signupPrograma);
-
+        selectImageButton = findViewById(R.id.btn_select_image1);
+        imageUrlTextView = findViewById(R.id.txt_selected_image1);
 
         // Configurar los adaptadores para los spinners
         ArrayAdapter<CharSequence> tipoAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_array, android.R.layout.simple_spinner_item);
@@ -89,7 +99,7 @@ public class Registro extends AppCompatActivity {
                 String genero = signupGenero.getSelectedItem().toString();
                 String correo = signupCorreo.getText().toString();
                 String numTelefono = signupNumTelefono.getText().toString();
-                String programa = signupPrograma.getSelectedItem().toString();
+                String programa = spnProfesionales.getSelectedItem().toString();
 
                 // Verificar si el correo ingresado es válido
                 if (!isValidEmail(correo)) {
@@ -104,7 +114,7 @@ public class Registro extends AppCompatActivity {
                 }
 
                 // Crea el cuerpo de la solicitud POST como formulario multipart
-                RequestBody requestBody = new MultipartBody.Builder()
+                MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("contrasena", contrasena)
                         .addFormDataPart("nombres", nombres)
@@ -114,8 +124,19 @@ public class Registro extends AppCompatActivity {
                         .addFormDataPart("genero", genero)
                         .addFormDataPart("correo", correo)
                         .addFormDataPart("numTelefono", numTelefono)
-                        .addFormDataPart("programa", programa)
-                        .build();
+                        .addFormDataPart("programa", programa);
+
+                if (selectedImageUri != null) {
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
+                        byte[] imageBytes = getBytes(inputStream);
+                        requestBodyBuilder.addFormDataPart("imgAprendiz", "imgAprendiz", RequestBody.create(MediaType.parse("image/*"), imageBytes));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                RequestBody requestBody = requestBodyBuilder.build();
 
                 // Crea la solicitud POST a la URL de Vercel
                 Request request = new Request.Builder()
@@ -162,6 +183,13 @@ public class Registro extends AppCompatActivity {
             }
         });
 
+        selectImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImagePicker();
+            }
+        });
+
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,6 +199,30 @@ public class Registro extends AppCompatActivity {
         });
     }
 
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            selectedImageUri = data.getData();
+            imageUrlTextView.setText(selectedImageUri.toString());
+        }
+    }
+
+    private byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
+    }
 
     public void cargaData(){
         retrofit2.Call<List<Programa>> call = userService.listaProfesionales();
@@ -197,7 +249,6 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
-
 
     public void mensajeAlert(String titulo, String msg){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
