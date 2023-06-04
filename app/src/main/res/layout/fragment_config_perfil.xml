@@ -27,22 +27,22 @@
             tools:layout_editor_absoluteY="20dp">
             <com.mikhaellopez.circularimageview.CircularImageView
 
-                android:id="@+id/ivUserLogIn"
+                android:id="@+id/ivUserPerfil"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/avatar"
+                android:scaleType="centerCrop"
                 app:civ_border_color="#000"
+                android:src="@drawable/avatar"
                 app:civ_border_width="2dp"
-                app:civ_shadow="false"
                 tools:ignore="MissingClass" />
 
             <TextView
                 android:id="@+id/textHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='Cambia la foto de perfil'
+                android:text='Actualizar foto de perfil'
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20dp"
