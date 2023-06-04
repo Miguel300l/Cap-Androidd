@@ -61,15 +61,13 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Psicologos());
                     break;
                 case R.id.charla:
-                    replaceFragment(new Fragment_charlass());
+                    replaceFragment(new Charla());
                     break;
-                case R.id.config_generall:
-                    replaceFragment(new Config_general());
-                    break;
+
                 case R.id.enfermeros:
                     replaceFragment(new Fragment_Enfermeros());
                     break;
-                case R.id.vwConfigPerfil:
+                case R.id.configPerfil:
                     replaceFragment(new ConfigPerfil());
                     break;
             }
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
 
         // Redirigir al login
-        Intent intent = new Intent(MainActivity.this, Login2.class);
+        Intent intent = new Intent(MainActivity.this, Login_Aprendiz.class);
         startActivity(intent);
         finish();
     }

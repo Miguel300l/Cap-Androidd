@@ -62,7 +62,7 @@ public class LoginProfesional extends AppCompatActivity {
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginProfesional.this, Registro.class);
+                Intent intent = new Intent(LoginProfesional.this, Registro_Aprendiz.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class LoginProfesional extends AppCompatActivity {
         TextoRePro3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginProfesional.this, Login2.class);
+                Intent intent = new Intent(LoginProfesional.this, Login_Aprendiz.class);
                 startActivity(intent);
             }
         });

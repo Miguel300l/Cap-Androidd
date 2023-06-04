@@ -35,7 +35,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Registro extends AppCompatActivity {
+public class Registro_Aprendiz extends AppCompatActivity {
 
     Spinner spnProfesionales;
     ArrayAdapter<String> adapter;
@@ -55,7 +55,7 @@ public class Registro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_registro);
+        setContentView(R.layout.fragment_registro_aprendiz);
 
         spnProfesionales = findViewById(R.id.signupPrograma);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, profesionales);
@@ -103,13 +103,13 @@ public class Registro extends AppCompatActivity {
 
                 // Verificar si el correo ingresado es válido
                 if (!isValidEmail(correo)) {
-                    Toast.makeText(Registro.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro_Aprendiz.this, "Correo inválido", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // Verificar la longitud mínima de la contraseña y su formato
                 if (contrasena.length() < 8 || !isValidPassword(contrasena)) {
-                    Toast.makeText(Registro.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro_Aprendiz.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -156,7 +156,7 @@ public class Registro extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(Registro.this, "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Registro_Aprendiz.this, "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -170,11 +170,11 @@ public class Registro extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (response.isSuccessful()) {
-                                    Toast.makeText(Registro.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Registro.this, com.example.bottomnavigationdemo.Login2.class);
+                                    Toast.makeText(Registro_Aprendiz.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Registro_Aprendiz.this, Login_Aprendiz.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(Registro.this, "Error al registrar: " + responseBody, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registro_Aprendiz.this, "Error al registrar: " + responseBody, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -193,7 +193,7 @@ public class Registro extends AppCompatActivity {
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Registro.this, com.example.bottomnavigationdemo.Login2.class);
+                Intent intent = new Intent(Registro_Aprendiz.this, Login_Aprendiz.class);
                 startActivity(intent);
             }
         });

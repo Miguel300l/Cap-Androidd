@@ -41,13 +41,13 @@
             android:resource="@color/white" />
 
         <activity
-            android:name=".Registro"
+            android:name=".Registro_Aprendiz"
             android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".Login2"
+            android:name=".Login_Aprendiz"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

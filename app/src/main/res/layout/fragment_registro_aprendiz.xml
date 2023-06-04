@@ -41,7 +41,7 @@
                     android:id="@+id/loginText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="REGISTRA TUS DATOS"
+                    android:text="REGISTRO APRENDIZ"
                     android:textAlignment="center"
                     android:textColor="@color/azul_oscuro"
                     android:textSize="36sp"

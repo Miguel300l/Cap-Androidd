@@ -25,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Login2 extends AppCompatActivity {
+public class Login_Aprendiz extends AppCompatActivity {
 
     EditText loginUsername, loginPassword;
     Button loginButton;
@@ -37,7 +37,7 @@ public class Login2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login_aprendiz);
 
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
@@ -52,7 +52,7 @@ public class Login2 extends AppCompatActivity {
         boolean estadoInicioSesion = sp.getBoolean("estado_inicio_sesion", false);
         if (estadoInicioSesion) {
             // Redirigir a la actividad principal
-            Intent intent = new Intent(Login2.this, MainActivity.class);
+            Intent intent = new Intent(Login_Aprendiz.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -71,7 +71,7 @@ public class Login2 extends AppCompatActivity {
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login2.this, Registro.class);
+                Intent intent = new Intent(Login_Aprendiz.this, Registro_Aprendiz.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +79,7 @@ public class Login2 extends AppCompatActivity {
         TextoRePro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login2.this, RegistroProfesional.class);
+                Intent intent = new Intent(Login_Aprendiz.this, RegistroProfesional.class);
                 startActivity(intent);
             }
         });
@@ -87,7 +87,7 @@ public class Login2 extends AppCompatActivity {
         TextoRePro2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login2.this, LoginProfesional.class);
+                Intent intent = new Intent(Login_Aprendiz.this, LoginProfesional.class);
                 startActivity(intent);
             }
         });
@@ -138,7 +138,7 @@ public class Login2 extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(Login2.this, "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login_Aprendiz.this, "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -166,24 +166,24 @@ public class Login2 extends AppCompatActivity {
                                 String savedToken = sp.getString("token", "");
                                 String savedCorreo = sp.getString("correo", "");
                                 if (!savedToken.isEmpty() && !savedCorreo.isEmpty()) {
-                                    Toast.makeText(Login2.this, "Token guardado correctamente: " + savedToken, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(Login2.this, "Correo guardado correctamente: " + savedCorreo, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login_Aprendiz.this, "Token guardado correctamente: " + savedToken, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login_Aprendiz.this, "Correo guardado correctamente: " + savedCorreo, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(Login2.this, "Error al guardar el token o el correo", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login_Aprendiz.this, "Error al guardar el token o el correo", Toast.LENGTH_SHORT).show();
                                 }
                                 // Iniciar sesión exitoso
-                                Toast.makeText(Login2.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login_Aprendiz.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
                                 // Redirigir a la siguiente actividad
-                                Intent intent = new Intent(Login2.this, MainActivity.class);
+                                Intent intent = new Intent(Login_Aprendiz.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Toast.makeText(Login2.this, "Error al parsear la respuesta", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login_Aprendiz.this, "Error al parsear la respuesta", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(Login2.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login_Aprendiz.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

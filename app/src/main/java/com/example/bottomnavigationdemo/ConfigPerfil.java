@@ -17,24 +17,6 @@ public class ConfigPerfil extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_config_perfil, container, false);
 
-        // Obtiene una referencia del botón en el layout
-        ImageButton ImgEdit = (ImageButton) view.findViewById(R.id.ImgEdit);
-        ImgEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crea una instancia del nuevo fragmento
-                Config_general config_general = new Config_general();
-
-                // Obtiene una instancia del FragmentManager
-                FragmentManager fragmentManager = getFragmentManager();
-
-                // Reemplaza el fragmento actual con el nuevo fragmento
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_layout, config_general)
-                        .commit();
-            }
-        });
-
         return view;
     }
 }

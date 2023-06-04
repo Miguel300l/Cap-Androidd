@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".Charla"
+    android:layout_height="match_parent"
     android:background="@drawable/fondo"
-    android:layout_height="match_parent">
+    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+    tools:context=".Charla"
+    android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="486dp"
+        android:orientation="horizontal"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10mm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
 
         <FrameLayout
             android:id="@+id/containerSolicitarCharlas1"
-            android:layout_width="387dp"
-            android:layout_height="298dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
             android:background="@drawable/border"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
-
-            <TextView
-                android:id="@+id/loginText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SOLICITA TU CHARLA"
-                android:textAlignment="center"
-                android:textColor="@color/azul_oscuro"
-                android:textSize="36sp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="245dp"
-                android:layout_marginTop="80dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:padding="15dp">
 
-                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp"
-                    tools:context=".MainActivity">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/loginText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="SOLICITA TU CHARLA"
+                        android:textAlignment="center"
+                        android:textColor="@color/azul_oscuro"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/border"
+                    android:padding="10dp">
 
                     <EditText
                         android:id="@+id/editTextDateTime"
@@ -58,31 +71,67 @@
                         android:layout_height="wrap_content"
                         android:clickable="true"
                         android:focusable="false"
-                        android:hint="Select date and time"
-                        android:inputType="none" />
+                        android:textSize="15dp"
+                        android:hint="Selecciona fecha y hora"
+                        android:inputType="none"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/border"
+                    android:padding="8dp">
+
+                    <Spinner
+                        android:id="@+id/spnProfesionales"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/border"
+                    android:padding="10dp">
 
                     <EditText
                         android:id="@+id/editTextMotive"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextDateTime"
-                        android:layout_marginTop="16dp"
-                        android:hint="Enter motive" />
+                        android:gravity="top|start"
+                        android:textSize="15dp"
+                        android:hint="Motivo de tu cita"
+                        android:inputType="textMultiLine"
+                        android:minLines="3"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
-                    <Button
-                        android:id="@+id/buttonSubmit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextMotive"
-                        android:layout_marginTop="16dp"
-                        android:text="Submit" />
+                </LinearLayout>
 
-                </RelativeLayout>
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextMotive"
+                    android:layout_gravity="center"
+                    android:text="Solicitar" />
 
             </LinearLayout>
 
         </FrameLayout>
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="100dp" />
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
