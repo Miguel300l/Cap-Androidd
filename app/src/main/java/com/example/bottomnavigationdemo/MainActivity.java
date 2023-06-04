@@ -1,5 +1,6 @@
 package com.example.bottomnavigationdemo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
@@ -11,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bottomnavigationdemo.adapter.EventosAdapter;
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
+        private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
@@ -127,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.option1:
                         // Acción para la opción 1
+                        mostrarNotificaciones();
                         return true;
                     case R.id.option2:
                         // Acción para la opción 2
@@ -144,6 +148,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Mostrar el menú
         popupMenu.show();
+    }
+
+    private void mostrarNotificaciones(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view = inflater.inflate(R.layout.notificaciones_visuales, null);
+
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
     private void closeSession() {

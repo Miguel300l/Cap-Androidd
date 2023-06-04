@@ -3,12 +3,12 @@
 
         <item
             android:id="@+id/option1"
-            android:title="notificaiones" />
+            android:title="Notificaiones" />
         <item
             android:id="@+id/option2"
-            android:title="configuracion perfil" />
+            android:title="Configuracion perfil" />
         <item
             android:id="@+id/option3"
-            android:title="cerrar sesion " />
+            android:title="Cerrar sesion " />
 
 </menu>
