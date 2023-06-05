@@ -261,32 +261,7 @@
 
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btn_select_image1"
-                        android:layout_width="129dp"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="8dp"
-                        android:layout_height="70dp"
-                        android:text="Seleccione imagen" />
-
-                    <TextView
-                        android:id="@+id/txt_selected_image1"
-                        android:layout_width="140dp"
-                        android:layout_height="59dp"
-                        android:layout_below="@id/btn_select_image"
-                        android:layout_marginTop="-10dp"
-                        android:layout_marginBottom="36dp"
-                        android:background="@drawable/border"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -314,6 +289,38 @@
                             android:entries="@array/generos_array" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/border"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="16dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_select_image1"
+                        android:layout_width="130dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="-10dp"
+                        android:layout_height="70dp"
+                        android:text="FOTO" />
+
+                    <TextView
+                        android:id="@+id/txt_selected_image1"
+                        android:layout_width="140dp"
+                        android:layout_height="59dp"
+                        android:layout_below="@id/btn_select_image"
+                        android:layout_marginTop="-30dp"
+                        android:layout_marginBottom="36dp"
+                        android:background="@drawable/border"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
                 <TextView
