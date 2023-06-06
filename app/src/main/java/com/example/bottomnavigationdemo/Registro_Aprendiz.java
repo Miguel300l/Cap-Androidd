@@ -60,7 +60,6 @@ public class Registro_Aprendiz extends AppCompatActivity {
         spnProfesionales = findViewById(R.id.signupPrograma);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, profesionales);
         spnProfesionales.setAdapter(adapter);
-
         userService = ApiAprendiz.getAprendiz().create(UserService.class);
         cargaData();
 
@@ -77,6 +76,7 @@ public class Registro_Aprendiz extends AppCompatActivity {
         signupPrograma = findViewById(R.id.signupPrograma);
         selectImageButton = findViewById(R.id.btn_select_image1);
         imageUrlTextView = findViewById(R.id.txt_selected_image1);
+
 
         // Configurar los adaptadores para los spinners
         ArrayAdapter<CharSequence> tipoAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_array, android.R.layout.simple_spinner_item);
