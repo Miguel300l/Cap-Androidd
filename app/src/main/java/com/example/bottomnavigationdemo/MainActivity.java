@@ -34,9 +34,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Eventos> verEventosCronograma;
-    private RecyclerView recyclerView;
-    private EventosAdapter eventosAdapter;
 
     ActivityMainBinding binding;
 
@@ -50,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new EventosFragment());
 
-        recyclerView = findViewById(R.id.rv_Eventos);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
-        showverEventos();
 
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -61,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new EventosFragment());
                     break;
                 case R.id.psicologoss:
-                    replaceFragment(new Psicologos());
+                    replaceFragment(new Profesionales());
                     break;
                 case R.id.charla:
                     replaceFragment(new Charla());
@@ -98,25 +92,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void showverEventos() {
-        Call<List<Eventos>> call = ApiAprendiz.getAprendiz().create(ApiEventos.class).getverEventosCronograma();
-        call.enqueue(new Callback<List<Eventos>>() {
-            @Override
-            public void onResponse(Call<List<Eventos>> call, Response<List<Eventos>> response) {
-                if (response.isSuccessful()) {
-                    verEventosCronograma = response.body();
-                    Toast.makeText(MainActivity.this, "" + response.body(), Toast.LENGTH_LONG).show();
-                    eventosAdapter = new EventosAdapter(verEventosCronograma, getApplicationContext());
-                    recyclerView.setAdapter(eventosAdapter);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Eventos>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void showOptionsMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this, floatingActionButton);
