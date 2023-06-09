@@ -60,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.charla:
                     replaceFragment(new Charla());
                     break;
-
-                case R.id.enfermeros:
-                    replaceFragment(new Fragment_Enfermeros());
-                    break;
                 case R.id.configPerfil:
                     replaceFragment(new ConfigPerfil());
                     break;
