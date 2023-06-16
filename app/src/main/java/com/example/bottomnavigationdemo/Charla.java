@@ -1,10 +1,15 @@
 package com.example.bottomnavigationdemo;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,75 +20,105 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import com.example.bottomnavigationdemo.entity.UserCharla;
+import com.example.bottomnavigationdemo.model.charla.DataRequestModel;
+import com.example.bottomnavigationdemo.network.RetrofitHelper;
 import com.example.bottomnavigationdemo.service.ServiceCharla;
 import com.example.bottomnavigationdemo.util.Connection;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class Charla extends Fragment {
-
-    private EditText editTextDateTime;
+    private EditText editTextDateTime, editTextMotive;
     private Calendar calendar;
-
     private Spinner spnProfesionales;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> profesionales = new ArrayList<>();
-
     private ServiceCharla serviceCharla;
+    private SharedPreferences sharedPreferences;
+    private String id_professional = "_id";
+    private List<UserCharla> lstProfesionales;
+    private String token = "";
+    private String id = "";
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_charla, container, false);
 
+        sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editTextDateTime = view.findViewById(R.id.editTextDateTime);
+        editTextMotive = view.findViewById(R.id.editTextMotive);
         calendar = Calendar.getInstance();
-
         editTextDateTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDateTimePicker();
             }
         });
-
-        // Agregar el OnClickListener al botón de enviar
-        Button sendButton = view.findViewById(R.id.buttonSubmit);
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Aquí puedes llamar a tu AsyncTask para realizar la solicitud HTTP
-            }
-        });
-
         spnProfesionales = view.findViewById(R.id.spnProfesionales);
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, profesionales);
         spnProfesionales.setAdapter(adapter);
 
         serviceCharla = Connection.getConnecion().create(ServiceCharla.class);
-        cargaData();
+        loadData();
+
+        id = sharedPreferences.getString("id", "");
+        token = sharedPreferences.getString("token", "");
+        Button sendButton = view.findViewById(R.id.buttonSubmit);
+        DataRequestModel dataRequestModel = new DataRequestModel();
+        dataRequestModel.setId_aprendiz(id);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                id_professional = lstProfesionales.get(spnProfesionales.getSelectedItemPosition()).get_id();
+                String fechaSolicitada = editTextDateTime.getText().toString();
+                dataRequestModel.setFechaSolicitada(fechaSolicitada);
+                dataRequestModel.setMotivo(editTextMotive.getText().toString());
+
+                dataRequestModel.setId_profesional(id_professional);
+                executeServiceNewRequest(dataRequestModel);
+            }
+        });
 
         return view;
     }
+
+    private void executeServiceNewRequest(DataRequestModel dataRequestModel) {
+        try {
+            Retrofit retrofit = RetrofitHelper.getInstance();
+            ServiceCharla apiService = retrofit.create(ServiceCharla.class);
+            Call<String> call = apiService.createNewRequest(dataRequestModel, token);
+            Log.e(TAG, "executeServiceNewRequest: " + dataRequestModel);
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Log.e(TAG, "onResponse: " + response.body());
+                    Toast.makeText(getContext(), "Solicitud enviada exitosamente", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.e(TAG, "onFailure: " + t.getMessage());
+                    Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (Exception ex) {
+            Log.e(TAG, "executeServiceNewRequest: " + ex.getMessage());
+            Toast.makeText(getContext(), "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void showDateTimePicker() {
         final Calendar currentDate = Calendar.getInstance();
         final Calendar selectedDate = Calendar.getInstance();
@@ -108,7 +143,7 @@ public class Charla extends Fragment {
                                         selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                         selectedDate.set(Calendar.MINUTE, minute);
 
-                                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault());
+                                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm a", Locale.getDefault());
                                         String formattedDateTime = dateFormat.format(selectedDate.getTime());
                                         editTextDateTime.setText(formattedDateTime);
                                     }
@@ -121,108 +156,26 @@ public class Charla extends Fragment {
         datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
         datePickerDialog.show();
     }
-    private class HttpRequestTask extends AsyncTask<String, Void, String> {
-        private static final String URL_STRING = "https://backend-cap-273v.vercel.app/crearSolicitud";
-        private static final String DATE = "2023-05-22";
-        private static final String MOTIVE = "Some motive";
 
-        @Override
-        protected String doInBackground(String... params) {
-            HttpURLConnection urlConnection = null;
-            try {
-                URL url = new URL(URL_STRING);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                urlConnection.setDoOutput(true);
-
-                String aprendiz = params[0];
-                String profesional = params[1];
-
-                // Construye el cuerpo de la solicitud en formato JSON
-                String requestBody = "{\"fechaSolicitada\":\"" + DATE + "\",\"motivo\":\"" + MOTIVE + "\",\"id_aprendiz\":\"" +
-                        aprendiz + "\",\"id_profesional\":\"" + profesional + "\"}";
-
-                // Envía los datos al servidor
-                try (OutputStream outputStream = urlConnection.getOutputStream()) {
-                    byte[] input = requestBody.getBytes(StandardCharsets.UTF_8);
-                    outputStream.write(input, 0, input.length);
-                }
-
-                // Lee la respuesta del servidor
-                int statusCode = urlConnection.getResponseCode();
-                if (statusCode == HttpURLConnection.HTTP_OK) {
-                    InputStream inputStream = urlConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                    StringBuilder response = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        response.append(line);
-                    }
-                    bufferedReader.close();
-                    return response.toString();
-                } else {
-                    return "Error: " + statusCode;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "Error: " + e.getMessage();
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            // Aquí puedes manejar la respuesta del servidor
-            // result contiene la respuesta del servidor en formato de texto
-
-            if (result.startsWith("Error")) {
-                Toast.makeText(getActivity(), "Error en la solicitud: " + result, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getActivity(), "Solicitud enviada exitosamente", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    public void cargaData() {
+    public void loadData() {
         Call<List<UserCharla>> call = serviceCharla.listaProfesionales();
         call.enqueue(new Callback<List<UserCharla>>() {
             @Override
-            public void onResponse(Call<List<UserCharla>> call, Response<List<UserCharla>> response) {
-                mensajeToast("Acceso exitoso al servicio REST");
-                if (response.isSuccessful()) {
-                    mensajeToast("Acceso exitoso al servicio REST");
-                    List<UserCharla> lstProfesionales = response.body();
-                    for (UserCharla userCharla : lstProfesionales) {
-                        String nombreCompleto = userCharla.getNombres() + " " + userCharla.getApellidos() + " - " + userCharla.getProfesion();
-                        profesionales.add(nombreCompleto);
-                    }
-                    adapter.notifyDataSetChanged();
-
-                } else {
-                    mensajeToast("Error de acceso al servicio REST");
+            public void onResponse(@NonNull Call<List<UserCharla>> call, @NonNull Response<List<UserCharla>> response) {
+                if (!response.isSuccessful())
+                    return;
+                lstProfesionales = response.body();
+                for (UserCharla userCharla : lstProfesionales) {
+                    String nombreCompleto = userCharla.getNombres() + " " + userCharla.getApellidos() + " - " + userCharla.getProfesion();
+                    profesionales.add(nombreCompleto);
                 }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<UserCharla>> call, Throwable t) {
-                mensajeToast("Error de acceso al servicio REST");
+                Toast.makeText(requireContext(), "Error de acceso al servicio REST", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void mensajeAlert(String titulo, String msg) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-        alertDialog.setMessage(msg);
-        alertDialog.setTitle(titulo);
-        alertDialog.setCancelable(true);
-        alertDialog.show();
-    }
-
-    void mensajeToast(String mensaje) {
-
     }
 }
