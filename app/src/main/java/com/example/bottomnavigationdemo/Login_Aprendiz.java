@@ -169,8 +169,7 @@ public class Login_Aprendiz extends AppCompatActivity {
                                     editor.apply();
 
                                     // Mostrar mensaje de éxito
-                                    Toast.makeText(Login_Aprendiz.this, "Inicio de sesión exitoso. ID guardado exitosamente: " + id + ", Token: " + token, Toast.LENGTH_SHORT).show();
-
+                                    Toast.makeText(Login_Aprendiz.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                                     // Redirigir a la siguiente actividad
                                     Intent intent = new Intent(Login_Aprendiz.this, MainActivity.class);
                                     startActivity(intent);
@@ -190,7 +189,6 @@ public class Login_Aprendiz extends AppCompatActivity {
             }
         });
     }
-
 
     private String extractIdFromToken(String token) {
         String[] chunks = token.split("\\.");

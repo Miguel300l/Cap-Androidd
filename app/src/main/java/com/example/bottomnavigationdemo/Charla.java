@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +81,14 @@ public class Charla extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Obtener el id del profesional almacenado en SharedPreferences
+                String id = sharedPreferences.getString("idProfesional", "");
+                // Verificar si el usuario es un profesional
+                if (!TextUtils.isEmpty(id) && id.equals(id)) {
+                    Toast.makeText(getContext(), "Solo los aprendices pueden solicitar charlas", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 id_professional = lstProfesionales.get(spnProfesionales.getSelectedItemPosition()).get_id();
                 String fechaSolicitada = editTextDateTime.getText().toString();
                 dataRequestModel.setFechaSolicitada(fechaSolicitada);
@@ -89,7 +98,6 @@ public class Charla extends Fragment {
                 executeServiceNewRequest(dataRequestModel);
             }
         });
-
         return view;
     }
 

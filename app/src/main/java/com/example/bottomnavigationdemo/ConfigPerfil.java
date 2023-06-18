@@ -51,7 +51,9 @@ public class ConfigPerfil extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String id = sharedPreferences.getString("id", "");
+        String idProfesional = sharedPreferences.getString("idProfesional", "");
         getPerfil(id);
+        getPerfilPro(idProfesional);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +76,36 @@ public class ConfigPerfil extends Fragment {
         apiService = RetrofitClient.getApiService();
     }
 
-    private void getPerfil(String id) {
+    private void getPerfil(String id ) {
         apiService.getArticuloId(id).enqueue(new Callback<Perfil_Aprendiz>() {
+            @Override
+            public void onResponse(Call<Perfil_Aprendiz> call, Response<Perfil_Aprendiz> response) {
+                if (response.isSuccessful()) {
+                    Perfil_Aprendiz perfil = response.body();
+                    if (perfil != null) {
+                        Nombre.setText(perfil.getNombres());
+                        Apellido.setText(perfil.getApellidos());
+                        correo.setText(perfil.getCorreo());
+                        numTelefono.setText(perfil.getNumTelefono());
+
+
+                    }
+                } else {
+                    Nombre.setText("Error en la respuesta del servidor.");
+                    Apellido.setText("Error en la respuesta del servidor.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Perfil_Aprendiz> call, Throwable t) {
+                Nombre.setText(t.getMessage());
+                Apellido.setText(t.getMessage());
+            }
+        });
+    }
+
+    private void getPerfilPro(String idProfesional ) {
+        apiService.getArticuloId(idProfesional).enqueue(new Callback<Perfil_Aprendiz>() {
             @Override
             public void onResponse(Call<Perfil_Aprendiz> call, Response<Perfil_Aprendiz> response) {
                 if (response.isSuccessful()) {

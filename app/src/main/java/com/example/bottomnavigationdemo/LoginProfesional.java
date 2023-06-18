@@ -144,20 +144,27 @@ public class LoginProfesional extends AppCompatActivity {
                             try {
                                 JSONObject responseJson = new JSONObject(responseBody);
                                 String token = responseJson.getString("token");
+                                String idProfesional = extractIdFromToken(token);
 
-                                // Guardar el token y el estado de inicio de sesión en SharedPreferences
-                                SharedPreferences.Editor editor = sp.edit();
-                                editor.putString("token", token);
-                                editor.putBoolean("estado_inicio_sesion", true);
-                                editor.apply();
+                                if (idProfesional != null) {
+                                    // Guardar el token y el id en SharedPreferences
+                                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("token", token);
+                                    editor.putBoolean("estado_inicio_sesion", true);
+                                    editor.putString("idProfesional", idProfesional);
+                                    editor.apply();
 
-                                // Iniciar sesión exitoso
-                                Toast.makeText(LoginProfesional.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                                    // Mostrar mensaje de éxito
+                                    Toast.makeText(LoginProfesional.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                                // Redirigir a la siguiente actividad
-                                Intent intent = new Intent(LoginProfesional.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                    // Redirigir a la siguiente actividad
+                                    Intent intent = new Intent(LoginProfesional.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginProfesional.this, "Error al extraer el ID del token", Toast.LENGTH_SHORT).show();
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 Toast.makeText(LoginProfesional.this, "Error al parsear la respuesta", Toast.LENGTH_SHORT).show();
@@ -169,5 +176,17 @@ public class LoginProfesional extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private String extractIdFromToken(String token) {
+        String[] chunks = token.split("\\.");
+        String payload = new String(android.util.Base64.decode(chunks[1], android.util.Base64.DEFAULT));
+        try {
+            JSONObject payloadJson = new JSONObject(payload);
+            return payloadJson.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
