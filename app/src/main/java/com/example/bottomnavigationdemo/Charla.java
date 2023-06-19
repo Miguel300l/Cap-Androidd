@@ -89,6 +89,17 @@ public class Charla extends Fragment {
                     return;
                 }
 
+                // Obtener los valores de los campos de texto
+                String dateTime = editTextDateTime.getText().toString().trim();
+                String motive = editTextMotive.getText().toString().trim();
+
+                // Verificar si alguno de los campos está vacío
+                if (TextUtils.isEmpty(dateTime) || TextUtils.isEmpty(motive)) {
+                    Toast.makeText(getContext(), "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 id_professional = lstProfesionales.get(spnProfesionales.getSelectedItemPosition()).get_id();
                 String fechaSolicitada = editTextDateTime.getText().toString();
                 dataRequestModel.setFechaSolicitada(fechaSolicitada);

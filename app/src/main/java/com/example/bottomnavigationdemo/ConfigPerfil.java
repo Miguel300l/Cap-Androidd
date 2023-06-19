@@ -55,13 +55,6 @@ public class ConfigPerfil extends Fragment {
         getPerfil(id);
         getPerfilPro(idProfesional);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
-
         return view;
     }
 
@@ -82,17 +75,16 @@ public class ConfigPerfil extends Fragment {
             public void onResponse(Call<Perfil_Aprendiz> call, Response<Perfil_Aprendiz> response) {
                 if (response.isSuccessful()) {
                     Perfil_Aprendiz perfil = response.body();
+
                     if (perfil != null) {
                         Nombre.setText(perfil.getNombres());
                         Apellido.setText(perfil.getApellidos());
                         correo.setText(perfil.getCorreo());
                         numTelefono.setText(perfil.getNumTelefono());
 
-
                     }
                 } else {
-                    Nombre.setText("Error en la respuesta del servidor.");
-                    Apellido.setText("Error en la respuesta del servidor.");
+
                 }
             }
 
@@ -132,24 +124,4 @@ public class ConfigPerfil extends Fragment {
         });
     }
 
-    private void openGallery() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
-            Uri uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

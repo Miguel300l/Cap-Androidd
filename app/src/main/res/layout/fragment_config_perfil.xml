@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Actualizar foto de perfil"
+                    android:text="Foto de perfil"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -83,14 +83,14 @@
                     android:textStyle="bold" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/txtNombre"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
-                    android:text="Luis"
+                    android:text="Nombre"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -116,14 +116,14 @@
                     android:textStyle="bold" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/editarApellido"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
-                    android:text="Garzón"
+                    android:text="Apellido"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -149,14 +149,14 @@
                     android:textStyle="bold" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/editarCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
-                    android:text="LpuntoG@gmail.com"
+                    android:text="Correo"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -182,14 +182,14 @@
                     android:textStyle="bold" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/editarTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
-                    android:text="6666-666"
+                    android:text="Celular"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
