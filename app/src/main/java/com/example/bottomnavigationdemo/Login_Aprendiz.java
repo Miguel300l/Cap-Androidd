@@ -250,7 +250,8 @@ public class Login_Aprendiz extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String id = sharedPreferences.getString("id", "");
 
-        Toast.makeText(Login_Aprendiz.this, "ID guardado: " + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,  "ID guardado: " + id, Toast.LENGTH_SHORT).show();
+
 
 
         Retrofit retrofit = new Retrofit.Builder()
