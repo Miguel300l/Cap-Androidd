@@ -1,5 +1,8 @@
 package com.example.bottomnavigationdemo;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +28,10 @@ import com.example.bottomnavigationdemo.databinding.ActivityMainBinding;
 import com.example.bottomnavigationdemo.model.Eventos;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.ApiEventos;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new EventosFragment());
+
 
 
         binding.bottomNavigationView.setBackground(null);

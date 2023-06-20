@@ -47,4 +47,7 @@
     </string-array>
 
 
+    <string name="msg_token_fmt">TAK: %1$s</string>
+
+
 </resources>
