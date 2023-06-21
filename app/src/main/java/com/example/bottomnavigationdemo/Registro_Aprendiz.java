@@ -5,10 +5,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +41,9 @@ public class Registro_Aprendiz extends AppCompatActivity {
 
     Spinner spnProfesionales;
     ArrayAdapter<String> adapter;
-    ArrayList<String> profesionales = new ArrayList<String>();
+
+    private List<String> programaIds = new ArrayList<>();
+    private List<String>programas=new ArrayList<>();
     UserService userService;
 
     EditText signupPassword, signupNombres, signupApellidos,
@@ -57,8 +61,33 @@ public class Registro_Aprendiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_registro_aprendiz);
 
+        // Inicializar Spinner y adaptador
         spnProfesionales = findViewById(R.id.signupPrograma);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, profesionales);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, programas);
+        spnProfesionales.setAdapter(adapter);
+
+        // Establecer listener para guardar el ID del programa seleccionado en SharedPreferences
+        spnProfesionales.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                // Guardar el ID del programa seleccionado en SharedPreferences
+                String selectedProgramId = programaIds.get(position);
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("id", selectedProgramId);
+                editor.apply();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // No se seleccionó ningún programa
+            }
+        });
+
+
+
+        spnProfesionales = findViewById(R.id.signupPrograma);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, programas);
         spnProfesionales.setAdapter(adapter);
         userService = ApiAprendiz.getAprendiz().create(UserService.class);
         cargaData();
@@ -99,7 +128,16 @@ public class Registro_Aprendiz extends AppCompatActivity {
                 String genero = signupGenero.getSelectedItem().toString();
                 String correo = signupCorreo.getText().toString();
                 String numTelefono = signupNumTelefono.getText().toString();
-                String programa = spnProfesionales.getSelectedItem().toString();
+
+                // Obtener el ID del programa seleccionado de SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                String selectedProgramId = sharedPreferences.getString("id", "");
+
+                // Verificar si se seleccionó un programa
+                if (selectedProgramId.isEmpty()) {
+                    Toast.makeText(Registro_Aprendiz.this, "No se seleccionó ningún programa", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Verificar si el correo ingresado es válido
                 if (!isValidEmail(correo)) {
@@ -110,6 +148,12 @@ public class Registro_Aprendiz extends AppCompatActivity {
                 // Verificar la longitud mínima de la contraseña y su formato
                 if (contrasena.length() < 8 || !isValidPassword(contrasena)) {
                     Toast.makeText(Registro_Aprendiz.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Verificar el formato del número de teléfono
+                if (!isValidPhoneNumber(numTelefono)) {
+                    Toast.makeText(Registro_Aprendiz.this, "El número de teléfono debe comenzar con 3 y tener 10 dígitos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -124,7 +168,7 @@ public class Registro_Aprendiz extends AppCompatActivity {
                         .addFormDataPart("genero", genero)
                         .addFormDataPart("correo", correo)
                         .addFormDataPart("numTelefono", numTelefono)
-                        .addFormDataPart("programa", programa);
+                        .addFormDataPart("programa", selectedProgramId);
 
                 if (selectedImageUri != null) {
                     try {
@@ -224,18 +268,18 @@ public class Registro_Aprendiz extends AppCompatActivity {
         return byteBuffer.toByteArray();
     }
 
-    public void cargaData(){
+
+    public void cargaData() {
         retrofit2.Call<List<Programa>> call = userService.listaProfesionales();
         call.enqueue(new retrofit2.Callback<List<Programa>>() {
             @Override
             public void onResponse(retrofit2.Call<List<Programa>> call, retrofit2.Response<List<Programa>> response) {
-                mensajeToast("Acceso exitoso al servicio REST");
-                if (response.isSuccessful()){
-                    mensajeToast("Acceso exitoso al servicio REST");
+                if (response.isSuccessful()) {
                     List<Programa> lstProfesionales = response.body();
-                    for (Programa programa:lstProfesionales){
+                    for (Programa programa : lstProfesionales) {
                         String nombreCompleto = programa.getNombre() + " " + programa.getFicha();
-                        profesionales.add(nombreCompleto);
+                        programaIds.add(programa.get_id());
+                        programas.add(nombreCompleto);
                     }
                     adapter.notifyDataSetChanged();
                 } else {
@@ -249,7 +293,6 @@ public class Registro_Aprendiz extends AppCompatActivity {
             }
         });
     }
-
     public void mensajeAlert(String titulo, String msg){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setMessage(msg);
@@ -263,6 +306,11 @@ public class Registro_Aprendiz extends AppCompatActivity {
         toast1.show();
     }
 
+    // Función para validar el número de teléfono con expresión regular
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // Verificar si el número de teléfono comienza con "3" y tiene exactamente 10 dígitos
+        return phoneNumber.matches("^3\\d{9}$");
+    }
     // Verificar si el correo es válido utilizando una expresión regular
     public static boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";

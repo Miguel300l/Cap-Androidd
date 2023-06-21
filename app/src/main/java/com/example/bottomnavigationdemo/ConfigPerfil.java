@@ -90,8 +90,7 @@ public class ConfigPerfil extends Fragment {
 
             @Override
             public void onFailure(Call<Perfil_Aprendiz> call, Throwable t) {
-                Nombre.setText(t.getMessage());
-                Apellido.setText(t.getMessage());
+
             }
         });
     }
@@ -111,15 +110,13 @@ public class ConfigPerfil extends Fragment {
 
                     }
                 } else {
-                    Nombre.setText("Error en la respuesta del servidor.");
-                    Apellido.setText("Error en la respuesta del servidor.");
+
                 }
             }
 
             @Override
             public void onFailure(Call<Perfil_Aprendiz> call, Throwable t) {
-                Nombre.setText(t.getMessage());
-                Apellido.setText(t.getMessage());
+
             }
         });
     }

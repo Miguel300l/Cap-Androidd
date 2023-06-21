@@ -31,16 +31,16 @@
     <string name="eliminar_cuenta">Eliminar mi cuenta</string>
     <string name="Configuracion">Configuracion</string>
 
-        <string-array name="tipos_array">
-            <item>Cedula de ciudadania</item>
-            <item>Tarjeta de identidad</item>
-        </string-array>
+    <string-array name="tipos_array">
+        <item>Cedula de ciudadania</item>
+        <item>Tarjeta de identidad</item>
+    </string-array>
 
-        <string-array name="generos_array">
-            <item>Masculino</item>
-            <item>Femenino</item>
-            <item>Otro</item>
-        </string-array>
+    <string-array name="generos_array">
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>Otro</item>
+    </string-array>
 
     <string-array name="profesion_array">
         <item>profesional</item>
