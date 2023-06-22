@@ -25,8 +25,6 @@ public class Profesionales extends Fragment {
     private RecyclerView rvProfesionales;
     private ProfesionalesAdapter profesionalesAdapter;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

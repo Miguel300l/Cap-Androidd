@@ -149,7 +149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/border"
+                    android:background="@drawable/border_spinner"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="4dp"
                     android:padding="16dp"
@@ -200,19 +200,17 @@
 
                 </LinearLayout>
 
-
-
-
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/border_spinner"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="16dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -221,10 +219,11 @@
                         android:layout_weight="1"
                         android:hint="PROFESION">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <Spinner
                             android:id="@+id/signupProfesion"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:entries="@array/profesion_array" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -256,40 +255,13 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/border"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="4dp"
-                    android:padding="16dp"
-                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:hint="ROL">
-
-                        <Spinner
-                            android:id="@+id/signupRol"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/profesion_array" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/border"
+                    android:background="@drawable/border_spinner"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="4dp"
                     android:padding="16dp"

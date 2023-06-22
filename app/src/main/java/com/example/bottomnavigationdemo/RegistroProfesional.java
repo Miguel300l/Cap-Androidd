@@ -40,12 +40,13 @@ import okhttp3.Response;
 public class RegistroProfesional extends AppCompatActivity {
 
     EditText signupPassword, signupNombres, signupApellidos,
-            signupNumeroDocumento, signupCorreo, signupNumTelefono, signupProfesion;
+            signupNumeroDocumento, signupCorreo, signupNumTelefono;
 
-    Spinner signupTipo, signupGenero, signupRol;
+    Spinner signupTipo, signupGenero, signupProfesion;
     TextView loginRedirectText, imageUrlTextView;
     Button signupButton, buttonSeleccionarImagen;
 
+    String rol = "profesional";
     private Uri selectedImageUri;
 
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -65,7 +66,6 @@ public class RegistroProfesional extends AppCompatActivity {
         loginRedirectText = findViewById(R.id.loginRedirectText);
         signupTipo = findViewById(R.id.signup_tipo);
         signupGenero = findViewById(R.id.signup_genero);
-        signupRol = findViewById(R.id.signupRol);
         signupProfesion = findViewById(R.id.signupProfesion);
         buttonSeleccionarImagen = findViewById(R.id.btn_select_image);
         imageUrlTextView = findViewById(R.id.txt_selected_image);
@@ -79,9 +79,9 @@ public class RegistroProfesional extends AppCompatActivity {
         generoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signupGenero.setAdapter(generoAdapter);
 
-        ArrayAdapter<CharSequence> rolAdapter = ArrayAdapter.createFromResource(this, R.array.profesion_array, android.R.layout.simple_spinner_item);
-        rolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        signupRol.setAdapter(rolAdapter);
+        ArrayAdapter<CharSequence> profesionAdapter = ArrayAdapter.createFromResource(this, R.array.profesion_array, android.R.layout.simple_spinner_item);
+        profesionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        signupProfesion.setAdapter(profesionAdapter);
 
         buttonSeleccionarImagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,9 +110,9 @@ public class RegistroProfesional extends AppCompatActivity {
                 String numeroDocumento = signupNumeroDocumento.getText().toString();
                 String genero = signupGenero.getSelectedItem().toString();
                 String correo = signupCorreo.getText().toString();
-                String profesion = signupProfesion.getText().toString();
+                String profesion = signupProfesion.getSelectedItem().toString();
                 String numTelefono = signupNumTelefono.getText().toString();
-                String rol = signupRol.getSelectedItem().toString();
+
 
                 // Crea el cuerpo de la solicitud POST como formulario multipart
                 MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()

@@ -43,8 +43,13 @@
     </string-array>
 
     <string-array name="profesion_array">
-        <item>profesional</item>
+        <item>Profesion</item>
+        <item>Psicologia</item>
+        <item>Deporte</item>
+        <item>Cultura</item>
+        <item>Salud</item>
     </string-array>
+
 
 
     <string name="msg_token_fmt">TAK: %1$s</string>

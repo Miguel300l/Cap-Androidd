@@ -10,8 +10,6 @@
     <color name="lavender">#8692f7</color>
     <color name="azul_oscuro">#00324d</color>
     <color name="verde_claro">#15a012</color>
-    <color name="GRIS">#F0474B4E</color>
-
-
+    <color name="GRIS">#F0838485</color>
 
 </resources>
