@@ -98,8 +98,14 @@ public class RegistroProfesional extends AppCompatActivity {
                     return;
                 }
 
-                if (!isValidPassword(signupPassword.getText().toString())) {
-                    Toast.makeText(RegistroProfesional.this, "Contraseña inválida. Debe contener al menos una letra, un número y un carácter especial", Toast.LENGTH_SHORT).show();
+                if (signupPassword.length() < 8 || !isValidPassword(signupPassword.getText().toString())) {
+                    Toast.makeText(RegistroProfesional.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Verificar el formato del número de teléfono
+                if (!isValidPhoneNumber(signupNumTelefono.getText().toString())) {
+                    Toast.makeText(RegistroProfesional.this, "El número de teléfono debe comenzar con 3 y tener 10 dígitos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -202,13 +208,21 @@ public class RegistroProfesional extends AppCompatActivity {
         });
     }
 
-    private boolean isValidEmail(CharSequence email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    // Verificar si el correo es válido utilizando una expresión regular
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return email.matches(emailRegex);
     }
 
-    private boolean isValidPassword(String password) {
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@._#$%¿)><(*´}{°|~`^&+=!?¡])(?=\\S+$).{8,}$";
-        return password.matches(passwordPattern);
+    // Función para validar el número de teléfono con expresión regular
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // Verificar si el número de teléfono comienza con "3" y tiene exactamente 10 dígitos
+        return phoneNumber.matches("^3\\d{9}$");
+    }
+
+    public static boolean isValidPassword(String password) {
+        String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@.#$%¿)><(*´}{°|~`^&+=!?¡]).*$";
+        return password.matches(passwordRegex);
     }
 
     private void openImagePicker() {

@@ -21,18 +21,41 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.bottomnavigationdemo.R;
 import com.example.bottomnavigationdemo.entity.UserCharla;
 import com.example.bottomnavigationdemo.model.charla.DataRequestModel;
+
+import com.example.bottomnavigationdemo.network.RetrofitApiService;
 import com.example.bottomnavigationdemo.network.RetrofitHelper;
+import com.example.bottomnavigationdemo.network.UserService;
 import com.example.bottomnavigationdemo.service.ServiceCharla;
 import com.example.bottomnavigationdemo.util.Connection;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -81,6 +104,9 @@ public class Charla extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                id_professional = lstProfesionales.get(spnProfesionales.getSelectedItemPosition()).get_id();
+                String fechaSolicitada = editTextDateTime.getText().toString();
+
                 // Obtener el id del profesional almacenado en SharedPreferences
                 String id = sharedPreferences.getString("idProfesional", "");
                 // Verificar si el usuario es un profesional
@@ -100,11 +126,17 @@ public class Charla extends Fragment {
                 }
 
 
-                id_professional = lstProfesionales.get(spnProfesionales.getSelectedItemPosition()).get_id();
-                String fechaSolicitada = editTextDateTime.getText().toString();
-                dataRequestModel.setFechaSolicitada(fechaSolicitada);
-                dataRequestModel.setMotivo(editTextMotive.getText().toString());
+                // Formatear la fecha seleccionada a un objeto Date
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm a", Locale.getDefault());
+                Date selectedDate = null;
+                try {
+                    selectedDate = dateFormat.parse(fechaSolicitada);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
+                dataRequestModel.setFechaSolicitada(String.valueOf(selectedDate));
+                dataRequestModel.setMotivo(editTextMotive.getText().toString());
                 dataRequestModel.setId_profesional(id_professional);
                 executeServiceNewRequest(dataRequestModel);
             }
@@ -122,19 +154,21 @@ public class Charla extends Fragment {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     Log.e(TAG, "onResponse: " + response.body());
-                    Toast.makeText(getContext(), "Solicitud enviada exitosamente", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful()) {
+                        Toast.makeText(getActivity(), "Solicitud enviada correctamente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Log.e(TAG, "onFailure: " + t.getMessage());
-                    Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show();
                 }
             });
 
         } catch (Exception ex) {
             Log.e(TAG, "executeServiceNewRequest: " + ex.getMessage());
-            Toast.makeText(getContext(), "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
         }
     }
 
