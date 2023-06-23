@@ -213,9 +213,8 @@ public class LoginProfesional extends AppCompatActivity {
         }
     }
 
+
     //Token Notifiacaciones
-
-
     private void generateAndSendToken() {
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {

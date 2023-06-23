@@ -206,6 +206,7 @@ public class RegistroProfesional extends AppCompatActivity {
             }
         });
 
+
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

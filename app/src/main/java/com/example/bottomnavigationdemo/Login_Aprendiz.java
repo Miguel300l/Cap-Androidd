@@ -53,8 +53,8 @@ public class Login_Aprendiz extends AppCompatActivity {
     SharedPreferences sp;
 
     public static String tokens;
-
    LinearLayout linearLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

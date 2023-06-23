@@ -142,13 +142,13 @@ public class Charla extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 dataRequestModel.setFechaSolicitada(String.valueOf(selectedDate));
                 dataRequestModel.setMotivo(editTextMotive.getText().toString());
                 dataRequestModel.setId_profesional(id_professional);
                 executeServiceNewRequest(dataRequestModel);
             }
         });
+
         return view;
     }
 

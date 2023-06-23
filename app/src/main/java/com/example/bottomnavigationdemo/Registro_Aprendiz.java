@@ -213,6 +213,7 @@ public class Registro_Aprendiz extends AppCompatActivity {
                         });
                     }
 
+
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         // Manejo de la respuesta de la solicitud

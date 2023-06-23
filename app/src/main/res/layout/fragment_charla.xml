@@ -11,6 +11,7 @@
     tools:context=".Charla"
     android:orientation="horizontal">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="370dp"
         android:layout_height="486dp"

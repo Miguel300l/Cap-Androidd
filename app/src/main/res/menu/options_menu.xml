@@ -3,7 +3,7 @@
 
         <item
             android:id="@+id/option1"
-            android:title="Notificaiones" />
+            android:title="Notificaciones" />
         <item
             android:id="@+id/option2"
             android:title="Perfil" />
