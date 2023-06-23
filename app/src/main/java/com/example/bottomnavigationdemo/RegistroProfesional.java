@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.example.bottomnavigationdemo.model.Programa;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.UserService;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -48,6 +50,7 @@ public class RegistroProfesional extends AppCompatActivity {
 
     String rol = "profesional";
     private Uri selectedImageUri;
+    LinearLayout linearLayout;
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -55,7 +58,7 @@ public class RegistroProfesional extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_profesional);
-
+        linearLayout = (LinearLayout) findViewById(R.id.LayoutRegisterPro);
         signupPassword = findViewById(R.id.signup_passwordPro);
         signupNombres = findViewById(R.id.signup_nombresPro);
         signupApellidos = findViewById(R.id.signup_apellidosPro);
@@ -94,18 +97,21 @@ public class RegistroProfesional extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!isValidEmail(signupCorreo.getText().toString())) {
-                    Toast.makeText(RegistroProfesional.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Correo invalido", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
                 if (signupPassword.length() < 8 || !isValidPassword(signupPassword.getText().toString())) {
-                    Toast.makeText(RegistroProfesional.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Contraseña insegura", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
                 // Verificar el formato del número de teléfono
                 if (!isValidPhoneNumber(signupNumTelefono.getText().toString())) {
-                    Toast.makeText(RegistroProfesional.this, "El número de teléfono debe comenzar con 3 y tener 10 dígitos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Celular incorrecto", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
@@ -186,7 +192,8 @@ public class RegistroProfesional extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (response.isSuccessful()) {
-                                    Toast.makeText(RegistroProfesional.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar.make(linearLayout, "Te has registrado correctamente", Snackbar.LENGTH_SHORT);
+                                    snackbar.show();
                                     Intent intent = new Intent(RegistroProfesional.this, LoginProfesional.class);
                                     startActivity(intent);
                                 } else {

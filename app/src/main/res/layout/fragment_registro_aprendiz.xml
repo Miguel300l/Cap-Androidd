@@ -10,7 +10,7 @@
     android:gravity="center"
     android:id="@+id/LayoutRegister"
     android:background="@drawable/regis"
-    tools:context=".MainActivity">
+    tools:context=".Registro_Aprendiz">
 
 
     <ScrollView
@@ -333,7 +333,7 @@
                     android:id="@+id/signup_button"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/azul_oscuro"
                     android:text="REGISTRAR"
                     android:textColor="@color/white"

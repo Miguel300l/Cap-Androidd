@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
@@ -46,11 +48,14 @@ public class LoginProfesional extends AppCompatActivity {
     TextView TextoRePro;
     TextView TextoRePro3;
     SharedPreferences sp;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login_profesional);
+
+        linearLayout = (LinearLayout) findViewById(R.id.LoginPro);
 
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
@@ -169,7 +174,9 @@ public class LoginProfesional extends AppCompatActivity {
                                     editor.apply();
 
                                     // Mostrar mensaje de éxito
-                                    Toast.makeText(LoginProfesional.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar.make(linearLayout, "Inicio de sesión exitoso", Snackbar.LENGTH_SHORT);
+                                    snackbar.show();
+
 
                                     generateAndSendToken();
 
@@ -185,7 +192,8 @@ public class LoginProfesional extends AppCompatActivity {
                                 Toast.makeText(LoginProfesional.this, "Error al parsear la respuesta", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(LoginProfesional.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar = Snackbar.make(linearLayout, "Credenciales invalidas", Snackbar.LENGTH_SHORT);
+                            snackbar.show();
                         }
                     }
                 });

@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.bottomnavigationdemo.model.Programa;
 import com.example.bottomnavigationdemo.network.ApiAprendiz;
 import com.example.bottomnavigationdemo.network.UserService;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -54,6 +56,8 @@ public class Registro_Aprendiz extends AppCompatActivity {
     Button signupButton, selectImageButton;
 
     private static final int PICK_IMAGE_REQUEST = 1;
+
+    LinearLayout linearLayout;
     private Uri selectedImageUri;
 
     @Override
@@ -61,6 +65,7 @@ public class Registro_Aprendiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_registro_aprendiz);
 
+        linearLayout = (LinearLayout) findViewById(R.id.LayoutRegister);
         // Inicializar Spinner y adaptador
         spnProfesionales = findViewById(R.id.signupPrograma);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, programas);
@@ -141,19 +146,22 @@ public class Registro_Aprendiz extends AppCompatActivity {
 
                 // Verificar si el correo ingresado es válido
                 if (!isValidEmail(correo)) {
-                    Toast.makeText(Registro_Aprendiz.this, "Correo inválido", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Correo invalido", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
                 // Verificar la longitud mínima de la contraseña y su formato
                 if (contrasena.length() < 8 || !isValidPassword(contrasena)) {
-                    Toast.makeText(Registro_Aprendiz.this, "La contraseña debe tener al menos 8 caracteres y contener una combinación de letras, números y caracteres especiales", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Contraseña Insegura", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
                 // Verificar el formato del número de teléfono
                 if (!isValidPhoneNumber(numTelefono)) {
-                    Toast.makeText(Registro_Aprendiz.this, "El número de teléfono debe comenzar con 3 y tener 10 dígitos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Celular incorrecto", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
@@ -214,11 +222,13 @@ public class Registro_Aprendiz extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (response.isSuccessful()) {
-                                    Toast.makeText(Registro_Aprendiz.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar.make(linearLayout, "Te has registrado correctamente", Snackbar.LENGTH_SHORT);
+                                    snackbar.show();
                                     Intent intent = new Intent(Registro_Aprendiz.this, Login_Aprendiz.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(Registro_Aprendiz.this, "Error al registrar: " + responseBody, Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar.make(linearLayout, "Error al registrar: "  + responseBody, Snackbar.LENGTH_SHORT);
+                                    snackbar.show();
                                 }
                             }
                         });

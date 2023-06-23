@@ -8,9 +8,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:id="@+id/LayoutRegister"
+    android:id="@+id/LayoutRegisterPro"
     android:background="@drawable/regis"
-    tools:context=".MainActivity">
+    tools:context=".RegistroProfesional">
 
 
     <ScrollView
@@ -334,7 +334,7 @@
                     android:id="@+id/buttonregistrarPro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/azul_oscuro"
                     android:text="REGISTRAR"
                     android:textColor="@color/white"

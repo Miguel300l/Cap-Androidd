@@ -18,12 +18,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.bottomnavigationdemo.R;
@@ -35,6 +37,7 @@ import com.example.bottomnavigationdemo.network.RetrofitHelper;
 import com.example.bottomnavigationdemo.network.UserService;
 import com.example.bottomnavigationdemo.service.ServiceCharla;
 import com.example.bottomnavigationdemo.util.Connection;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,9 +77,12 @@ public class Charla extends Fragment {
     private String token = "";
     private String id = "";
 
+    ConstraintLayout constraintlayout;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_charla, container, false);
+        constraintlayout = (ConstraintLayout) view.findViewById(R.id.charlaa);
 
         sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editTextDateTime = view.findViewById(R.id.editTextDateTime);
@@ -111,7 +117,8 @@ public class Charla extends Fragment {
                 String id = sharedPreferences.getString("idProfesional", "");
                 // Verificar si el usuario es un profesional
                 if (!TextUtils.isEmpty(id) && id.equals(id)) {
-                    Toast.makeText(getContext(), "Solo los aprendices pueden solicitar charlas", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(constraintlayout, "Solo los aprendices pueden solicitar charlas", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
@@ -121,7 +128,8 @@ public class Charla extends Fragment {
 
                 // Verificar si alguno de los campos está vacío
                 if (TextUtils.isEmpty(dateTime) || TextUtils.isEmpty(motive)) {
-                    Toast.makeText(getContext(), "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(constraintlayout, "Todos los campos son requeridos", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                     return;
                 }
 
@@ -155,9 +163,11 @@ public class Charla extends Fragment {
                 public void onResponse(Call<String> call, Response<String> response) {
                     Log.e(TAG, "onResponse: " + response.body());
                     if (response.isSuccessful()) {
-                        Toast.makeText(getActivity(), "Solicitud enviada correctamente", Toast.LENGTH_SHORT).show();
+                        Snackbar snackbar = Snackbar.make(constraintlayout, "Solicitud enviada correctamente", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
                     } else {
-                        Toast.makeText(getActivity(), "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+                        Snackbar snackbar = Snackbar.make(constraintlayout, "Error al enviar la solicitud", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
                     }
                 }
 
