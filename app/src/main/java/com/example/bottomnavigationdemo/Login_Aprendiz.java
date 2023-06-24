@@ -249,7 +249,7 @@ public class Login_Aprendiz extends AppCompatActivity {
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
-                        Toast.makeText(Login_Aprendiz.this, msg, Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(Login_Aprendiz.this, msg, Toast.LENGTH_SHORT).show();
 
                         // Envía el token al backend
                         sendTokenToServer(token);
@@ -261,12 +261,12 @@ public class Login_Aprendiz extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String id = sharedPreferences.getString("id", "");
 
-        Toast.makeText(this,  "ID guardado: " + id, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,  "ID guardado: " + id, Toast.LENGTH_SHORT).show();
 
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.23.162:3000/")
+                .baseUrl("https://backend-cap-273v.vercel.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -278,10 +278,10 @@ public class Login_Aprendiz extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Login_Aprendiz.this, "Token enviado correctamente al servidor", Toast.LENGTH_SHORT).show();
+               //     Toast.makeText(Login_Aprendiz.this, "Token enviado correctamente al servidor", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Toast.makeText(Login_Aprendiz.this, "Error al enviar el token al servidor", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(Login_Aprendiz.this, "Error al enviar el token al servidor", Toast.LENGTH_SHORT).show();
 
                 }
             }

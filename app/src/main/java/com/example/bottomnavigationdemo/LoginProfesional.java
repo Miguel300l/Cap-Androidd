@@ -231,7 +231,7 @@ public class LoginProfesional extends AppCompatActivity {
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
-                        Toast.makeText(LoginProfesional.this, msg, Toast.LENGTH_SHORT).show();
+                   //     Toast.makeText(LoginProfesional.this, msg, Toast.LENGTH_SHORT).show();
 
                         // Envía el token al backend
                         sendTokenToServer(token);
@@ -243,10 +243,10 @@ public class LoginProfesional extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String id = sharedPreferences.getString("idProfesional", "");
 
-        Toast.makeText(LoginProfesional.this, "ID guardado: " + id, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(LoginProfesional.this, "ID guardado: " + id, Toast.LENGTH_SHORT).show();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.23.162:3000/")
+                .baseUrl("https://backend-cap-273v.vercel.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -257,9 +257,9 @@ public class LoginProfesional extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(LoginProfesional.this, "Token enviado correctamente al servidor", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(LoginProfesional.this, "Token enviado correctamente al servidor", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(LoginProfesional.this, "Error al enviar el token al servidor", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(LoginProfesional.this, "Error al enviar el token al servidor", Toast.LENGTH_SHORT).show();
                 }
             }
 
