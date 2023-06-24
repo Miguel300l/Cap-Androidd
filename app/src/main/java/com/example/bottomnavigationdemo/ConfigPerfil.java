@@ -44,7 +44,7 @@ public class ConfigPerfil extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_config_perfil, container, false);
 
-        imageView = view.findViewById(R.id.ivUserPerfil);
+
 
         initViews(view);
         initValues();

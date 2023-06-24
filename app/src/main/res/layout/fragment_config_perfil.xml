@@ -35,39 +35,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/Contenedor1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
-
-                <com.mikhaellopez.circularimageview.CircularImageView
-                    android:id="@+id/ivUserPerfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/avatar"
-                    app:civ_border_color="#0000"
-                    tools:ignore="MissingClass" />
-
-                <TextView
-                    android:id="@+id/textHome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Foto de perfil"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/border"
                 android:orientation="horizontal">
