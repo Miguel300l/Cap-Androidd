@@ -174,8 +174,7 @@ public class LoginProfesional extends AppCompatActivity {
                                     editor.apply();
 
                                     // Mostrar mensaje de éxito
-                                    Snackbar snackbar = Snackbar.make(linearLayout, "Inicio de sesión exitoso", Snackbar.LENGTH_SHORT);
-                                    snackbar.show();
+                                    Toast.makeText(LoginProfesional.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
 
                                     generateAndSendToken();

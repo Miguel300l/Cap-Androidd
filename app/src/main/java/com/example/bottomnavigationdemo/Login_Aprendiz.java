@@ -191,9 +191,7 @@ public class Login_Aprendiz extends AppCompatActivity {
 
 
                                     // Mostrar mensaje de éxito
-                                    Snackbar snackbar = Snackbar.make(linearLayout, "Inicio de sesión exitoso", Snackbar.LENGTH_SHORT);
-                                    snackbar.show();
-
+                                    Toast.makeText(Login_Aprendiz.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                                     generateAndSendToken();
 
                                     // Redirigir a la siguiente actividad

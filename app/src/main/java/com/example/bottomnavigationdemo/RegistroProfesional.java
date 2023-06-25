@@ -192,8 +192,7 @@ public class RegistroProfesional extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (response.isSuccessful()) {
-                                    Snackbar snackbar = Snackbar.make(linearLayout, "Te has registrado correctamente", Snackbar.LENGTH_SHORT);
-                                    snackbar.show();
+                                    Toast.makeText(RegistroProfesional.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegistroProfesional.this, LoginProfesional.class);
                                     startActivity(intent);
                                 } else {

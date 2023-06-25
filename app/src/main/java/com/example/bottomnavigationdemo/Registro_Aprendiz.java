@@ -223,8 +223,7 @@ public class Registro_Aprendiz extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (response.isSuccessful()) {
-                                    Snackbar snackbar = Snackbar.make(linearLayout, "Te has registrado correctamente", Snackbar.LENGTH_SHORT);
-                                    snackbar.show();
+                                    Toast.makeText(Registro_Aprendiz.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(Registro_Aprendiz.this, Login_Aprendiz.class);
                                     startActivity(intent);
                                 } else {
