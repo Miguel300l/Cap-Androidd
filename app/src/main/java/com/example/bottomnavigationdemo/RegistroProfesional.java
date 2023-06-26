@@ -103,14 +103,14 @@ public class RegistroProfesional extends AppCompatActivity {
                 }
 
                 if (signupPassword.length() < 8 || !isValidPassword(signupPassword.getText().toString())) {
-                    Snackbar snackbar = Snackbar.make(linearLayout, "Contraseña insegura", Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(linearLayout, "La contraseña debe ser segura", Snackbar.LENGTH_SHORT);
                     snackbar.show();
                     return;
                 }
 
                 // Verificar el formato del número de teléfono
                 if (!isValidPhoneNumber(signupNumTelefono.getText().toString())) {
-                    Snackbar snackbar = Snackbar.make(linearLayout, "Celular incorrecto", Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Telefono incorrecto", Snackbar.LENGTH_SHORT);
                     snackbar.show();
                     return;
                 }

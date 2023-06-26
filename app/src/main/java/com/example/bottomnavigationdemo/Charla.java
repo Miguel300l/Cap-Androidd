@@ -206,6 +206,15 @@ public class Charla extends Fragment {
                                         selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                         selectedDate.set(Calendar.MINUTE, minute);
 
+                                        // Validar si la hora seleccionada es anterior a la hora actual
+                                        Calendar currentDateTime = Calendar.getInstance();
+                                        if (selectedDate.before(currentDateTime)) {
+                                            Snackbar snackbar = Snackbar.make(constraintlayout, "Hora incorrecta", Snackbar.LENGTH_SHORT);
+                                            snackbar.show();
+                                            return;
+                                        }
+
+
                                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm a", Locale.getDefault());
                                         String formattedDateTime = dateFormat.format(selectedDate.getTime());
                                         editTextDateTime.setText(formattedDateTime);

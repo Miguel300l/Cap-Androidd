@@ -153,14 +153,14 @@ public class Registro_Aprendiz extends AppCompatActivity {
 
                 // Verificar la longitud mínima de la contraseña y su formato
                 if (contrasena.length() < 8 || !isValidPassword(contrasena)) {
-                    Snackbar snackbar = Snackbar.make(linearLayout, "Contraseña Insegura", Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(linearLayout, "La contraseña debe ser segura", Snackbar.LENGTH_SHORT);
                     snackbar.show();
                     return;
                 }
 
                 // Verificar el formato del número de teléfono
                 if (!isValidPhoneNumber(numTelefono)) {
-                    Snackbar snackbar = Snackbar.make(linearLayout, "Celular incorrecto", Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(linearLayout, "Telefono incorrecto", Snackbar.LENGTH_SHORT);
                     snackbar.show();
                     return;
                 }

@@ -1,6 +1,7 @@
 package com.example.bottomnavigationdemo
 
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -73,17 +74,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     // Método para obtener una vista remota personalizada para la notificación
+    @SuppressLint("RemoteViewLayout")
     fun getRemoteView(title: String, message: String): RemoteViews {
         // Crear una instancia de RemoteViews con el layout personalizado de la notificación
-        val remoteView = RemoteViews("com.example.bottomnavigationdemo", R.layout.notificaciones_visuales)
+        val remoteView = RemoteViews("com.example.bottomnavigationdemo", R.layout.fragment_notificaciones)
 
         // Establecer el texto del título y el mensaje en la vista remota
-        remoteView.setTextViewText(R.id.title, title)
-        remoteView.setTextViewText(R.id.message, message)
-        remoteView.setImageViewResource(R.id.app_logo, R.drawable.logocap)
+        remoteView.setTextViewText(R.id.title1, title)
+        remoteView.setTextViewText(R.id.message1, message)
+        remoteView.setImageViewResource(R.id.app_logo1, R.drawable.logocap)
 
         return remoteView
     }
+
 
     // Método para generar y mostrar la notificación
     fun generateNotification(title: String, message: String) {
