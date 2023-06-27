@@ -191,7 +191,7 @@ public class LoginProfesional extends AppCompatActivity {
                                 Toast.makeText(LoginProfesional.this, "Error al parsear la respuesta", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Snackbar snackbar = Snackbar.make(linearLayout, "Credenciales invalidas", Snackbar.LENGTH_SHORT);
+                            Snackbar snackbar = Snackbar.make(linearLayout, "Debes esperar hacer aceptado", Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                     }

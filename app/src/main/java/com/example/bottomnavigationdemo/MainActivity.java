@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         View view = inflater.inflate(R.layout.notificaciones_visuales, null);
 
         LinearLayout notificacionesLayout = view.findViewById(R.id.notificaciones_layout);
+        ScrollView scrollView = view.findViewById(R.id.scroll_view);
 
         // Obtener el ID de SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

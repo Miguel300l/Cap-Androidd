@@ -74,7 +74,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     // Método para obtener una vista remota personalizada para la notificación
-    @SuppressLint("RemoteViewLayout")
+
     fun getRemoteView(title: String, message: String): RemoteViews {
         // Crear una instancia de RemoteViews con el layout personalizado de la notificación
         val remoteView = RemoteViews("com.example.bottomnavigationdemo", R.layout.fragment_notificaciones)
